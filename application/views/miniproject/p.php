@@ -5,20 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-   
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     
-    
     <style>
-     body {
+    body {
         display: flex;
 
         margin: 0;
         min-height: 100vh;
         background-color: #b0a1a1;
 
-    } 
+    }
     
 
     #sidebar {
@@ -66,31 +64,10 @@
         }
     }
     </style>
-     <script type="text/javascript">
-        window.onload = function() {jam();}
-        
-        function jam() {
-            var a = document.getElementById('jam'),
-            d = new Date(), h, s,;
-            h = d.getHours();
-            m = set(d.getMinutes());
-            s = set(d.getSeconds());
-
-            a.innerHTML = h + ":" + m ":" + s;
-
-            setTimecut{'jam()', 1000};
-
-        }
-
-        function set(o) {
-            a = a < 10 ? '0' + a : a;
-            return a;
-        }
-    </script>
     
 </head>
 
-<body id="jam">
+<body class="flex h-screen bg-gray">
 <nav class="bg-white border-gray-200 dark:bg-gray-900">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
   <a href="https://flowbite.com/" class="flex items-center">
@@ -150,10 +127,12 @@
       <hr>
       <!-- Home -->
       <a href="<?php echo base_url('absensi') ?>">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
-                 <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
-                      </svg>
-                           <span class="flex-1 ml-3 whitespace-nowrap">Home</span>
+           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-gear-fill" viewBox="0 0 16 16">
+                <path d="M7.293 1.5a1 1 0 0 1 1.414 0L11 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l2.354 2.353a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5Z"/>
+                    <path d="M11.07 9.047a1.5 1.5 0 0 0-1.742.26l-.02.021a1.5 1.5 0 0 0-.261 1.742 1.5 1.5 0 0 0 0 2.86 1.504 1.504 0 0 0-.12 1.07H3.5A1.5 1.5 0 0 1 2 13.5V9.293l6-6 4.724 4.724a1.5 1.5 0 0 0-1.654 1.03Z"/>
+                        <path d="m13.158 9.608-.043-.148c-.181-.613-1.049-.613-1.23 0l-.043.148a.64.64 0 0 1-.921.382l-.136-.074c-.561-.306-1.175.308-.87.869l.075.136a.64.64 0 0 1-.382.92l-.148.045c-.613.18-.613 1.048 0 1.229l.148.043a.64.64 0 0 1 .382.921l-.074.136c-.306.561.308 1.175.869.87l.136-.075a.64.64 0 0 1 .92.382l.045.149c.18.612 1.048.612 1.229 0l.043-.15a.64.64 0 0 1 .921-.38l.136.074c.561.305 1.175-.309.87-.87l-.075-.136a.64.64 0 0 1 .382-.92l.149-.044c.612-.181.612-1.049 0-1.23l-.15-.043a.64.64 0 0 1-.38-.921l.074-.136c.305-.561-.309-1.175-.87-.87l-.136.075a.64.64 0 0 1-.92-.382ZM12.5 14a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/>
+                            </svg>
+                               <span class="flex-1 ml-3 whitespace-nowrap">Home</span>
         </a>
       <!-- Admin -->
       <a href="<?php echo base_url('absensi') ?>">
@@ -164,60 +143,12 @@
                                <span class="flex-1 ml-3 whitespace-nowrap">Admin</span>
      </a>
      <!-- Karyawan -->
-     <a href="<?php echo base_url('absensi/karyawan') ?>">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-               <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
-                    </svg>
-                          <span class="flex-1 ml-3 whitespace-nowrap">Karyawan</span>
+     <a href="<?php echo base_url('absensi') ?>">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                 </svg>
+                     <span class="flex-1 ml-3 whitespace-nowrap">Karyawan</span>
         </a>
-      <!-- Izin -->
-      <a href="<?php echo base_url('#') ?>">
-           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-align-bottom" viewBox="0 0 16 16">
-               <rect width="4" height="12" x="6" y="1" rx="1"/>
-                    <path d="M1.5 14a.5.5 0 0 0 0 1v-1zm13 1a.5.5 0 0 0 0-1v1zm-13 0h13v-1h-13v1z"/>
-                         </svg>
-                              <span class="flex-1 ml-3 whitespace-nowrap">Izin</span>
-                              
-      </a>
-      <i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>
-          <?php
-       date_default_timezone_set("Asia/Bangkok");
-         ?>
-
-             <script type="text/javascript">
-                  function date_time(id)
-        {
-            date   = new Date;
-            year   = date.getFullYear(); 
-            month  = date.getMonth();
-            months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
-            d      = date.getDate();
-            day    = date.getDay();
-            days   = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
-            h      = date.getHours();
-                   if(h<10)
-                   {
-                    h = "0"+h;
-                         }
-                        m = date.getMinutes();
-                       if(m<10)
-                         {
-                           m = "0"+m;
-                         }
-                             s = date.getSeconds();
-                               if(s<10)
-                                   {
-                                  s = "0"+s;
-                                 }
-                    result = ''+days[day]+' '+d+' '+months[month]+' '+year+' '+h+':'+m+':'+s;
-                           document.getElementById(id).innerHTML = result;
-                                    setTimeout('date_time("'+id+'");','1000');
-                                              return true;
-                                                      }
-                                                    </script>
-
-                                <span id="date_time"></span>
-                                                       <script type="text/javascript">window.onload = date_time('date_time');</script>
             
        
         <aside id="separator-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
@@ -229,30 +160,29 @@
             
         
          
-                          <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"> 
+         <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"> 
         
             </a>
            
          
-                          <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
             
                
             </a>
           
          
         
-                           <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
            
               
             </a>
             <!-- Profil -->
-            
         <a href="<?php echo base_url('absensi') ?>">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                      <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                           </svg>
-                               <span class="flex-1 ml-3 whitespace-nowrap">Edit Profil</span>
+                               <span class="flex-1 ml-3 whitespace-nowrap">Profil</span>
      </a>
            
         <!-- Log Out -->
@@ -262,7 +192,6 @@
                 <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
                     </svg>
                          <span class="flex-1 ml-3 whitespace-nowrap">Log out</span>
-
         </a>
 
       
@@ -270,7 +199,7 @@
 </aside>
       </div>
        
-     
+
             
 
 

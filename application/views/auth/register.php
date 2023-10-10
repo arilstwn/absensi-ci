@@ -22,8 +22,8 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 *{
-    margin: 0;
-    padding: 0;
+    margin: 10;
+    padding: 10;
     font-family: 'poppins',sans-serif;
 }
 section{
@@ -39,10 +39,10 @@ section{
 }
 .form-box{
     position: relative;
-    width: 400px;
-    height: 450px;
+    width: 450px;
+    height: 650px;
     background: transparent;
-    border: 2px solid rgba(255,255,255,0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
     backdrop-filter: blur(15px);
     display: flex;
@@ -149,19 +149,31 @@ button{
             <div class="form-value">
                 <form action="">
                     <h2>Register</h2>
+                   
+                    <form method="post" action="<?php echo base_url('auth/aksi_register') ?>">
+                    <div class="inputbox">
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                        <input nama="username" type="username" required>
+                        <label for="">Usrername</label>
+                    </div>
                     <div class="inputbox">
                     <ion-icon name="person-outline"></ion-icon>
-                        <input type="username" required>
-                        <label for="">Username</label>
+                        <input name="nama_depan" type="nama_depan" required>
+                        <label for="">First name</label>
+                    </div>
+                    <div class="inputbox">
+                    <ion-icon name="person-outline"></ion-icon>
+                        <input name="nama_belakang" type="nama_belakang" required>
+                        <label for="">Last name</label>
                     </div>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
-                        <input type="email" required>
+                        <input name="email" type="email" required>
                         <label for="">Email</label>
                     </div>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="password" required>
+                        <input name="password" type="password" required>
                         <label for="">Password</label>
                     </div>
                     <div class="forget">
@@ -169,9 +181,10 @@ button{
                       
                     </div>
                     
-                    <button href="<?php echo base_url('absensi') ?>" class="btn btn-secondary">Masuk</button>
+                    <button type="submit" class="btn btn-secondary">Masuk</button>
                     <div class="register">
-                        <p>Don't have a account <a href="<?php echo base_url('auth/login') ?>">Login</a></p>
+                        <p>Don't have a account <a href="<?php echo base_url('auth/login') ?>">login</a></p>
+                        <p><a href="<?php echo base_url('auth/register_karyawan') ?>">Register Karyawan</a></p>
                     </div>
                 </form>
             </div>
