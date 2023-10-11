@@ -15,7 +15,8 @@ class Absensi extends CI_Controller {
     // Absensi
     public function index()
 	{
-		         $this->load->view('absensi/index');
+            $data['karyawan'] = $this->m_model->get_data('karyawan')->result();
+		         $this->load->view('absensi/index', $data);
 	}
 
   // karyawan
@@ -25,8 +26,20 @@ class Absensi extends CI_Controller {
     $this->load->view('absensi/karyawan', $data);
   }
 
+ // Absensi
+  public function absensi()
+  {
+    $data['absensi'] = $this->m_model->get_data('absensi')->result();
+    $this->load->view('absensi/absensi', $data);
+  }
 
 
+
+  // Kegiatan 
+  public function kegiatan()
+  {
+    $this->load->view('absensi/kegiatan');
+  }  
 
 
 
