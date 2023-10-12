@@ -41,11 +41,36 @@ class Absensi extends CI_Controller {
     $this->load->view('absensi/kegiatan');
   }  
 
+  
+ 
+    var $template_data = array();
+ 
+    function set($name, $value)
+    {
+        $this->template_data[$name] = $value;
+    }
+ 
+    function load($template = '', $view = '', $view_data = array(), $return = FALSE)
+    {
+        $this->CI =& get_instance();
+        $this->set('contents', $this->CI->load->view($view, $view_data, TRUE));
+        return $this->CI->load->view($template, $this->template_data, $return);
+ 
+}
 
 
 
+  // Izin
+  public function izin()
+  {
+    $this->load->view('absensi/izin');
+  }
 
-
+  // profil
+  public function profil()
+  {
+    $this->load->view('absensi/profil');
+  }
 
 }
 ?>

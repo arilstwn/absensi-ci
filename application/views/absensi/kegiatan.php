@@ -255,9 +255,13 @@ p {
             </div>
         </header>
         <br>
-        
-      
-   
+        <div class="overview shadow-lg p-4 mb-3 bg-body rounded">
+        <p class="text-gray-900 text-5xl dark:text-white"><b>Absensi</b></p>
+                    <div class="wrapper d-flex flex-column">
+                        <textarea id="kegiatan" name="kegiatan" placeholder="Kegiatan..." required></textarea>
+                    </div>
+            <br>
+            <a href="<?php echo base_url('keuangan/tambah_pembayaran') ?>" class="btn btn-danger">Absensi</a> 
 </body>
 
 </html>
