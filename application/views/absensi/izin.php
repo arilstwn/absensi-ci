@@ -34,7 +34,7 @@
     
 
     #sidebar {
-        background-color: #005eff;
+        background-color: #46464e;
 
         color: #ffffff;
         height: 100%;
@@ -218,7 +218,9 @@
           <div class="flex items-center space-x-2">
                                                     </header>
        <hr>
-        
+        <div class="row">
+
+        </div>
 
 
 

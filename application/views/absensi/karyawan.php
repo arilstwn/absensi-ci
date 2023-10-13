@@ -1,22 +1,16 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>myPOS - by YukCoding</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?=base_url()?>assets/bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="<?=base_url()?>assets/dist/css/skins/_all-skins.min.css">
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -65,7 +59,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- User Account -->
+                        
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="<?=base_url()?>assets/dist/img/user2-160x160.jpg" class="user-image">
@@ -92,8 +86,7 @@
                 </div>
             </nav>
         </header>
- 
-        <!-- Left side column -->
+
         <aside class="main-sidebar">
             <section class="sidebar">
                 <div class="user-panel">
@@ -113,7 +106,7 @@
                         </span>
                     </div>
                 </form>
-                <!-- sidebar menu -->
+
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">MAIN NAVIGATION</li>
                     <li>
@@ -165,7 +158,7 @@
             </section>
         </aside>
  
-        <!-- Content Wrapper -->
+
         <div class="content-wrapper">
             <?php echo $contents ?>
         </div>
@@ -185,4 +178,4 @@
     <script src="<?=base_url()?>assets/dist/js/adminlte.min.js"></script>
  
 </body>
-</html>
+</html> -->

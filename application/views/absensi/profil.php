@@ -8,6 +8,8 @@
    
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     
     
     <style>
@@ -16,7 +18,7 @@
 
         margin: 0;
         min-height: 100vh;
-        background-color: #37abc3;
+        background-color: #656565;
 
     } 
      /* tr {
@@ -351,25 +353,98 @@ hr .new1 {
    
       
     </script>
+       <div id="content" role="main">
+        <header class="flex justify-between items-center p-4 bg-white border-b-2 border-gray-200">
+            <h1 class="text-4xl">UPDATE FOTO PROFIL</h1>
+            <div class="flex items-center space-x-2">
+
+            </div>
+        </header>
+        <br>
+        <br>
+        <br>
+
     
-    <div class="container mt-4 mb-4 p-3 d-flex justify-content-center"> <div class="card p-4"> <div class=" image d-flex flex-column justify-content-center align-items-center"> <button class="btn btn-secondary"> <img src="https://i1.sndcdn.com/avatars-BSlyMujIb8fWILro-0Bor8Q-t500x500.jpg" height="100" width="100" raounder/></button> <span class="name mt-3">Elaina</span> <span class="idd">elaina@gmai.com</span> <div class="d-flex flex-row justify-content-center align-items-center gap-2"> <span class="idd1">Oxc4c16a645_b21a</span> <span><i class="fa fa-copy"></i></span> </div> <div class="d-flex flex-row justify-content-center align-items-center mt-3"> <span class="number">1069 <span class="follow">Followers</span></span> </div> <div class=" d-flex mt-2"> 
+   <center>
+    <div class="card m-auto p-5">
+
+<br>
+
+<div>
+  <?php $this->session->flashdata('message') ?></div>
+<div class="row d-flex">
+    
+        <button class="border border-0 btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <?php if (!empty($row->foto)): ?>
+                
+            <img class="rounded-circle" height="150" width="150" src="<?php echo base64_decode($row->foto);?>">
+            <?php else: ?>
+            <img class="rounded-circle" height="340" width="340"
+                src="https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/702e5bd2-3dfb-4bf3-bbd3-07e4f6a112a4/width=450/19389-34987464-(masterpiece_1.6,%20best%20quality),%20(finely%20detailed%20beautiful%20eyes_%201.2),%20%20phelaina,%20Eouftit3,%20%20Eof3,%201girl,%20elaina%20(majo%20no%20tabit.jpeg" />
+            <?php endif;?>
+        </button>
+            </center>
+   
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Foto Profile</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="container w-75 m p-3">
+                        <form method="post" action="<?php echo base_url('admin/upload_image'); ?>"
+                            enctype="multipart/form-data" class="row">
+                            <div class="mb-3 col-12">
+                                <label for="nama" class="form-label">Foto:</label>
+                                <input type="hidden" class="form-control" id="id" name="id"
+                                    value="<?php echo $this->session->userdata('id'); ?>">
+                                <input type="hidden" name="base64_image" id="base64_image">
+                                <input class="form-control" type="file" name="userfile" id="userfile"
+                                    accept="image/*">
+                            </div>
+                            <div class="col-12 text-end">
+                                <input type="submit" class="btn btn-sm btn-primary px-3" name="submit"
+                                    value="Ubah Foto"></input>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        
+                        <a class="btn btn-danger" href="<?php echo base_url('absensi/hapus_image'); ?>">Hapus
+                            Foto</a>
+                    </div>
+
+                </div>
+
+            </div>
+
         
-        
-        
-        
-   </div> <div class="text mt-4 mb-5">
-    <span>Eleanor Pena is a creator of minimalistic x bold graphics and digital artwork.<br><br> Artist/ Creative Director by Day #NFT minting@ with FND night. </span> </div> <div class="gap-3 mt-3 icons d-flex flex-row justify-content-center align-items-center"> <span><i class="fa fa-twitter"></i></span> <span><i class="fa fa-facebook-f"></i></span> <span><i class="fa fa-instagram"></i></span> <span><i class="fa fa-linkedin"></i></span> </div> <div class=" px-2 rounded mt-4 date "> <span class="join">Joined May,2021</span> </div> </div>
-   <div class="flex mt-4 space-x-3 md:mt-6">
-            <center>
-            <button type="button" class="btn btn-danger">Primary</button>
-            <button type="button" class="btn btn-warning">Warning</button>
+
+
+
+
+
+        </div>
+        <br>
+        <div class="flex justify-content-between">
+            <div>
+            <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                 <a href="<?php echo base_url('absensi/edit_profil') ?>" class="btn btn-warning">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                          
+                        </svg> Update </a>
+            </div>
         </div>
 
-
-
-
-
-       
-</body>
-
+    </form>
+   
+</div>
+            </center>
+    </body>
+    
 </html>

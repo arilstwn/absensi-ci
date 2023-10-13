@@ -26,20 +26,24 @@ class Absensi extends CI_Controller {
     $this->load->view('absensi/karyawan', $data);
   }
 
- // Absensi
-  public function absensi()
+ // History
+  public function history()
   {
     $data['absensi'] = $this->m_model->get_data('absensi')->result();
-    $this->load->view('absensi/absensi', $data);
+    $this->load->view('absensi/history', $data);
+  }
+
+  // Absensi
+  public function absensi()
+  {
+    $this->load->view('absensi/absensi');
   }
 
 
 
-  // Kegiatan 
-  public function kegiatan()
-  {
-    $this->load->view('absensi/kegiatan');
-  }  
+
+  
+ 
 
   
  
@@ -71,6 +75,30 @@ class Absensi extends CI_Controller {
   {
     $this->load->view('absensi/profil');
   }
+
+
+  // Edit Foto Profil
+  public function edit_profil()
+  {
+    $this->load->view('absensi/edit_profil');
+  }
+
+
+
+// percobaan
+public function coba()
+{
+  $this->load->view('absensi/coba');
+}
+
+
+
+// hapus
+public function hapus_absensi($id)
+{
+  $this->m_model->delete('absensi', 'id', $id);
+  redirect(base_url('absensi/absensi'));
+}
 
 }
 ?>
