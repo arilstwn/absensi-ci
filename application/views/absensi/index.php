@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+   
    
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
@@ -139,10 +141,36 @@ if (isset($_POST['submit'])) {
 }
 ?>
 </script>
-    
+
+ <script>
+        function hapus(id) {
+            swal.fire({
+                title: 'Yakin untuk menghapus data ini?',
+                text: "Data ini akan terhapus permanen",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Batal',
+                confirmButtonText: 'Ya Hapus'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Dihapus',
+                        showConfirmButton: false,
+                        timer: 1500,
+
+                    }).then(function() {
+                        window.location.href = "<?php echo base_url('absensi/hapus_karyawan/')?>" + id;
+                    });
+                }
+            });
+        }
+        </script>
 </head>
 
-<body id="jam">
+<body id="jam"  class="flex h-screen bg-gray">
   
        
 
@@ -183,6 +211,8 @@ if (isset($_POST['submit'])) {
                     </svg>
                           <span class="flex-1 ml-3 whitespace-nowrap">Karyawan</span>
         </a>
+
+        </li>
         <!-- Absensi -->
     <a href="<?php echo base_url('absensi/history') ?>">
     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
@@ -284,7 +314,7 @@ if (isset($_POST['submit'])) {
           
            
         <!-- Log Out -->
-    <a href="<?php echo base_url('absensi/') ?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+    <a href="<?php echo base_url('auth/login') ?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
                 <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
@@ -303,199 +333,150 @@ if (isset($_POST['submit'])) {
 
             </div>
         </header>
+        <br>
+        <br>
         
        
      
     <!-- Dasboard -->
+    
+  
+    <center>
     <section>
         
-            <div class="row  p-5">
-                <div class="col-lg-4 col-md-7 mb-4 ">
-                    <div class="card ">
-                        <div class="card-body ">
-                            <p class="text-uppercase small mb-2">
-                                <strong><b>total masuk kerja</b></strong>
-                            </p>
-                            <h5 class="mb-0">
-                                <!-- <strong class="fs-1"><?php echo $siswa ?> </strong> -->
-                                <small class="text-success ms-2">
-                                    <i class="fas fa-arrow-up fa-sm pe-1"></i> <svg xmlns="http://www.w3.org/2000/svg"
-                                        height="3em" class="" viewBox="0 0 448 512">
-                                        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                        <style>
-                                        svg {
-                                            fill: #000000
-                                        }
-                                        </style>
-                                        <path
-                                            d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z" />
-                                    </svg>
-                                </small>
-                            </h5>
-
-                            <hr/>
-
-                            <p class="text-uppercase text-muted small mb-2">
-
-                            </p>
-                            <h5 class="text-muted mb-0"> <a href="<?php echo base_url('project/siswa') ?>"
-                                    class=" fs-5 btn btn-sm text-fark ">Data
-                                    Lengkap</a>
-                            </h5>
-                        </div>
-                    </div>
-                    <!-- Card -->
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="text-uppercase small mb-2">
-                                <strong><b>Total cuti kerja</b></strong>
-                            </p>
-                            <h5 class="mb-0">
-                                <!-- <strong class="fs-1"> <?php echo $guru ?> </strong> -->
-                                <small class="text-success ms-2"><svg xmlns="http://www.w3.org/2000/svg" height="3em"
-                                        viewBox="0 0 448 512">
-                                        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                        <path
-                                            d="M224 256A128 128 0 1 1 224 0a128 128 0 1 1 0 256zM209.1 359.2l-18.6-31c-6.4-10.7 1.3-24.2 13.7-24.2H224h19.7c12.4 0 20.1 13.6 13.7 24.2l-18.6 31 33.4 123.9 36-146.9c2-8.1 9.8-13.4 17.9-11.3c70.1 17.6 121.9 81 121.9 156.4c0 17-13.8 30.7-30.7 30.7H285.5c-2.1 0-4-.4-5.8-1.1l.3 1.1H168l.3-1.1c-1.8 .7-3.8 1.1-5.8 1.1H30.7C13.8 512 0 498.2 0 481.3c0-75.5 51.9-138.9 121.9-156.4c8.1-2 15.9 3.3 17.9 11.3l36 146.9 33.4-123.9z" />
-                                    </svg>
-                                </small>
-                            </h5>
-
-                            <hr />
-
-                            <p class="text-uppercase text-muted small mb-2">
-
-                            </p>
-                            <h5 class="text-muted mb-0"> <a href="<?php echo base_url('project/guru') ?>"
-                                    class=" fs-5 btn btn-sm text-dark">Data
-                                    Lengkap</a></h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="text-uppercase small mb-2">
-                                <strong><b>kegiatan</b></strong>
-                            </p>
-                            <h5 class="mb-0">
-                                <!-- <strong class="fs-1"><?php echo $kelas ?></strong> -->
-                                <small class="text-danger ms-2">
-                                    <i class="fas fa-arrow-down fa-sm pe-1"></i><svg xmlns="http://www.w3.org/2000/svg"
-                                        height="3em" viewBox="0 0 512 512">
-                                        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                        <path
-                                            d="M240.1 4.2c9.8-5.6 21.9-5.6 31.8 0l171.8 98.1L448 104l0 .9 47.9 27.4c12.6 7.2 18.8 22 15.1 36s-16.4 23.8-30.9 23.8H32c-14.5 0-27.2-9.8-30.9-23.8s2.5-28.8 15.1-36L64 104.9V104l4.4-1.6L240.1 4.2zM64 224h64V416h40V224h64V416h48V224h64V416h40V224h64V420.3c.6 .3 1.2 .7 1.8 1.1l48 32c11.7 7.8 17 22.4 12.9 35.9S494.1 512 480 512H32c-14.1 0-26.5-9.2-30.6-22.7s1.1-28.1 12.9-35.9l48-32c.6-.4 1.2-.7 1.8-1.1V224z" />
-                                    </svg></small>
-                            </h5>
-
-                            <hr />
-
-                            <p class="text-uppercase text-muted small mb-2">
-
-                            </p>
-                            <h5 class="text-muted mb-0"> <a href="<?php echo base_url('project/kelas') ?>"
-                                    class=" fs-5 btn btn-sm text-dark">Data
-                                    Lengkap</a></h5>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="text-uppercase small mb-2">
-                                <strong><b>Hari Libur</b></strong>
-                            </p>
-                            <h5 class="mb-0">
-                                <!-- <strong class="fs-1"><?php echo $mapel ?></strong> -->
-                                <small class="text-danger ms-2">
-                                    <i class="fas fa-arrow-down fa-sm pe-1"></i><svg xmlns="http://www.w3.org/2000/svg"
-                                        height="3em" viewBox="0 0 448 512">
-                                        <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                        <path
-                                            d="M96 0C43 0 0 43 0 96V416c0 53 43 96 96 96H384h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V384c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32H384 96zm0 384H352v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32zm32-240c0-8.8 7.2-16 16-16H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16zm16 48H336c8.8 0 16 7.2 16 16s-7.2 16-16 16H144c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
-                                    </svg>
-                                </small>
-                            </h5>
-
-                            <hr />
-
-                            <p class="text-uppercase text-muted small mb-2">
-
-                            </p>
-                            <h5 class="text-muted mb-0"> <a href="<?php echo base_url('project/mapel') ?>"
-                                    class=" fs-5 btn btn-sm text-dark">Data
-                                    Lengkap</a></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                   
-             <!-- Tbel Kryawan -->
-             <div class="row ">
-            <div class="col-12 card p-7">
-                <div class="card-body min-vh-200  align-items-center">
-                    <div class="card w-40 m-auto p-3">
-                        <table class="table  table-striped"> 
-                            <center><h1><b></b></h1></center>
-                            <hr>
-                        <!-- <img src="https://o.remove.bg/downloads/08abdb44-01af-4324-a097-a546a0d0bffa/png-transparent-computer-icons-three-people-black-%D0%BD%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%B0-user-removebg-preview-removebg-preview.png" alt="" width="330" height="330"> -->
-                        
-                        
-                            <center><thead>
-                           
-
-
-
-                                <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Username</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Nama Depan</th>
-                                    <th scope="col">Nama Belakang</th>
-                                    <th scope="col">Status</th>
-
-                                    
-                                </tr>
-                            </thead></center>
-                            <tbody>
-                              
-                                <?php
-                 $no= 0;foreach ($karyawan as $row  ) :$no++                          
-                    ?>
-                                   <tr>
-                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo$no ?></td>
-                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->username ?></td>
-                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->email ?></td>
-                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->nama_depan ?>
-                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->nama_belakang ?>
-                                    <td class="whitespace-nowrap px-4 py-2 text-gray-700"><?php echo $row->status ?>
-                                 </td>
-                                 <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                                 <a class="btn btn-danger" href="#"> <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+    <div class="card mb-4 shadow">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="card shadow bg-D8D9DA text-black shadow border-10 rounded">
+                                    <h3><b>Data Karyawan</b></h3>
+                                    <hr>
+                                    <div class="card-body d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <i class="fas fa-user mr-2" style="font-size: 60px;"></i>
+                                            </div>
+                                            <div class="ml-auto"></div>
+                                        <br>
+                                        <span style="font-size: 24px;">
+                                            <b><?php echo $karyawan ?></b>
+                                        </span>
+                                    </div>
+                                    <hr>
+                                    <a href="<?php echo base_url('absensi/index') ?>">Lihat Detail</a><br>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="card shadow bg-D8D9DA text-black shadow border-10 rounded">
+                                    <h3><b>Data Absensi</b></h3>
+                                    <hr>
+                                    <div class="card-body d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <i class="fas fa-user-tie mr-2" style="font-size: 60px;"></i>
+                                        </div>
+                                        <div class="ml-auto"></div>
+                                        <span style="font-size: 24px;">
+                                            <b><?php echo $absensi?></b>
+                                        </span>
+                                    </div>
+                                    <hr>
+                                    <a href="<?php echo base_url('absensi/history') ?>">Lihat Detail</a><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="<?php echo base_url('absensi/export') ?>" class="btn btn-info">Export</a>
+                            <!-- Data Modal -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                   Modal
+                                  </button>
+                                  <form class="mt-5" method="post" enctype="multipart/form-data" 
+         action="<?= base_url('absensi/import') ?>">
+       <input type="file" name="file"/>
+       <button type="submit" class="btn btn-outline-success" name="submit">Import</button>
+       <div class="d-grid gap-2 d-md-block"></div>
+        <hr>
+ 
+       </form>
+                           <br>
+                          
+                           <!-- Export -->
+                        <!-- Tbel Kryawan -->
+                        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="padding: 2px;">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="<?php echo base_url('tampilan'); ?>">
+                <font color="white"><i class="fa-solid fa-house-chimney"></i> Home</font>
+              </a>
+            </li>
+            <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li> -->
+          </ul>
+          <form style="margin-right: 20px;" class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      <h1><b></b></h1>
+      <!-- <center><?php echo anchor('admin/tambah_siswa', 'TAMBAH DATA'); ?></center> -->
+      <table class="table table-secondary table-bordered border-primary">
+        
+        <thead>
+          <tr>
+            <th><b>No.</b></th>
+            <th><b>Nama</b></th>
+            <th><b>Email</b></th>
+            <th><b>Nama Depan</b></th>
+            <th><b>Nama Belakang</b></th>
+            <th><b>status</b></th>
+            <th><b>Aksi</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php $no = 1;
+          foreach ($data as $u) { ?>
+            <td class="text-center"><b><?php echo $no++ ?></b></td>
+                        <td class="text-center"><b><?php echo $u->username ?></b></td>
+                        <td class="text-center"><b><?php echo $u->email ?></b></td>
+                        <td class="text-center"><b><?php echo $u->nama_depan ?></b></td>
+                        <td class="text-center"><b><?php echo $u->nama_belakang ?></b></td>
+                        <td class="text-center"><b><?php echo $u->status ?></b></td>
+                        <td class="text-center"> 
+                        <button onclick="hapus(<?php echo $u->id ?>)" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"   class="bi bi-trash" viewBox="0 0 16 16">
                                       <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-                               
-         
-                                  </td>
-                              </tr><?php endforeach ?>
-                           </table>
-                       
-                        </div>
-                        
-                                
-                    
-                    </form>
-                   
-                     
+                                          <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                             </svg></button>
+            </tr>
+                                           
+                                      
 
-                </div>
-            </div><
+          <?php } ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      ...
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>
+</div>
+           
 
 
      

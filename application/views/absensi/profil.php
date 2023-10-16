@@ -350,10 +350,7 @@ hr .new1 {
       </div>
       
     
-   
-      
-    </script>
-       <div id="content" role="main">
+      <div id="content" role="main">
         <header class="flex justify-between items-center p-4 bg-white border-b-2 border-gray-200">
             <h1 class="text-4xl">UPDATE FOTO PROFIL</h1>
             <div class="flex items-center space-x-2">
@@ -363,28 +360,57 @@ hr .new1 {
         <br>
         <br>
         <br>
-
-    
-   <center>
-    <div class="card m-auto p-5">
+        <div class="card m-auto p-5">
 
 <br>
 
 <div>
+  <center>
   <?php $this->session->flashdata('message') ?></div>
-<div class="row d-flex">
-    
+<div class="kontol">
+    <center>
         <button class="border border-0 btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
             <?php if (!empty($row->foto)): ?>
-                
             <img class="rounded-circle" height="150" width="150" src="<?php echo base64_decode($row->foto);?>">
             <?php else: ?>
-            <img class="rounded-circle" height="340" width="340"
+            <img class="rounded-circle" height="150" width="150"
                 src="https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/702e5bd2-3dfb-4bf3-bbd3-07e4f6a112a4/width=450/19389-34987464-(masterpiece_1.6,%20best%20quality),%20(finely%20detailed%20beautiful%20eyes_%201.2),%20%20phelaina,%20Eouftit3,%20%20Eof3,%201girl,%20elaina%20(majo%20no%20tabit.jpeg" />
             <?php endif;?>
         </button>
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
             </center>
-   
+    <form method="post" action="<?php echo base_url('absensi/upload_image') ?>" enctype="multipart/form_data">
+        <input name="id_siswa" type="hidden">
+        <div class="d-flex flex-row ">
+
+            <div class="p-2 col-6">
+                <label for="" class="form-label fs-5 "><b>Email</b></label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
+            </div>
+            <div class="p-2 col-6">
+                <label for="" class="form-label fs-5"><b>Username</b></label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+            </div>
+        </div>
+        <br>
+        <br>
+        <center>
+        <div class="d-flex flex-row ">
+            <div class="p-2 col-6 ">
+            <label for=" nama="" class="form-label fs-5"><b>Password Baru</b> </label>
+                <input type="text" class="form-control" id="password_baru" name="password_baru"
+                    placeholder="Password Baru" value=>
+            </div>
+            <div class="p-2 col-6 ">
+            <label for=" nama="" class="form-label fs-5"><b>Konfirmasi password</b></label>
+                <input type="text" class="form-control" id="password_konfirmasi" name="password_konfirmasi"
+                    placeholder="Konfirmasi Paswword" value=>
+            </div>
+        </div>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -412,8 +438,7 @@ hr .new1 {
                         </form>
                     </div>
                     <div class="modal-footer">
-                        
-                        <a class="btn btn-danger" href="<?php echo base_url('absensi/hapus_image'); ?>">Hapus
+                        <a class="btn btn-danger" href="<?php echo base_url('admin/hapus_image'); ?>">Hapus
                             Foto</a>
                     </div>
 
@@ -421,30 +446,32 @@ hr .new1 {
 
             </div>
 
-        
 
 
+            </cennter>
 
 
 
         </div>
-        <br>
         <div class="flex justify-content-between">
             <div>
-            <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                 <a href="<?php echo base_url('absensi/edit_profil') ?>" class="btn btn-warning">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                          <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                          
-                        </svg> Update </a>
+                <a href="<?php echo base_url('absensi/profil'); ?>"
+                    class="btn btn-warning">
+                    <span>Kembali</span>
+                </a>
+                
+                <button type="submit"
+                    class="btn btn-danger
+                    name=" submit">Confirm</button>
             </div>
         </div>
+            </div>
+        
+            </div>
 
     </form>
    
 </div>
-            </center>
-    </body>
-    
+</section>
+</body>
 </html>
