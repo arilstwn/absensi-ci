@@ -149,4 +149,68 @@ class M_model extends CI_Model{
     }
 
 
+// // harian
+// public function get_harian()
+// { 
+//       $this->db->select('id, id_karyawan,kegiatan, date, jam_masuk, jam_keluar, keterangan_izin, status');
+//       $this->db->from('absensi');
+//       $this->db->join('id', 'id_karyawan','kegiatan', 'date', 'jam_masuk', 'jam_keluar', 'keterangan_izin', 'status');
+//       $this->db->where('date', date('Y-m-d'));
+//       $db = $this->db->get();
+//       return $db->result(); 
+// }
+
+
+public function getAbsensiLast7Days() {
+    $this->load->database();
+    $end_date = date('Y-m-d');
+    $start_date = date('Y-m-d', strtotime('-7 days', strtotime($end_date)));        
+    $query = $this->db->select('date, kegiatan, jam_masuk, jam_keluar, keterangan_izin, status, COUNT(*) AS total_absences')
+                      ->from('absensi')
+                      ->where('date >=', $start_date)
+                      ->where('date <=', $end_date)
+                      ->group_by('date, kegiatan, jam_masuk, jam_keluar, keterangan_izin, status')
+                      ->get();
+    return $query->result_array();
+}
+
+
+
+
+public function getHarian($date) {        
+    $query = $this->db->select('date, kegiatan, jam_masuk, jam_keluar, keterangan_izin, status, COUNT(*) AS total_absences')
+                      ->from('absensi')
+                      ->where('date', date('Y-m-d'))
+                      ->get();
+    return $query->result_array();
+}
+
+
+
+
+
+
+public function getAbsensiMinggu($date) {       
+    $query = $this->db->select('date, kegiatan, jam_masuk, jam_keluar, keterangan_izin, status, COUNT(*) AS total_absences')
+                      ->from('absensi')
+                      ->where('date >=', $start_date)
+                      ->where('date <=', $end_date)
+                      ->get();
+    return $query->result_array();
+}
+
+
+
+public function getbulanan($bulan)
+{
+    $start_date = date('Y-m-d');
+    $query = $this->db->select('date, kegiatan, jam_masuk, jam_, keterangan_izin, status, COUNT(*) AS total_absences')
+    ->from('absensi')
+    ->where('date >=', $start_date)
+    ->get();
+return $query->result_array();
+}
+
+
+
 }

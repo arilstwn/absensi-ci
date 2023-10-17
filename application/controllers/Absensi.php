@@ -276,34 +276,10 @@ public function aksi_absensi()
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 public function edit_profil()
 {
   $this->load->view('absensi/edit_profil');
 }
-
-
-
-
-
-
-
  // export Karyawan
  public function export ()
  {
@@ -447,7 +423,36 @@ public function export_karyawan()
     $this->load->view('absensi/download_data_karyawan', $data);
   }
 }
+public function rekap_h()
+	{
+        $hari_ini = date('Y-m-d');
+        $data['absensi_harian'] = $this->m_model->get_harian($hari_ini);
+		$this->load->view('absensi/rekap_h', $data);
+	}
+  function laporan_harian(){
+    cek_session_admin();
+    $data = $this->model_app->hari_ini();
+      $data = array('record' => $data);
+    $this->template->load('app/template','app/mod_laporan/view_harian',$data);
+  }
 
+
+
+	
+// Rekap harian
+public function rekap_m() {
+  $data['absensi'] = $this->m_model->getAbsensiLast7Days();        
+  $this->load->view('absensi/rekap_m', $data);
+}
+
+
+
+
+public function rekap_b()
+	{
+     $data['absensi'] = $this->m_model->get_data('absensi')->result();
+		$this->load->view('absensi/rekap_b', $data);
+	}
 
 
 
