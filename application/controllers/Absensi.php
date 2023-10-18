@@ -18,7 +18,7 @@ class Absensi extends CI_Controller {
 	{           
     $data['karyawan'] = $this->m_model->get_data('karyawan')->num_rows();
 		$data['absensi'] = $this->m_model->get_data('absensi')->num_rows();
-	
+		$data['admin'] = $this->m_model->get_data('admin')->num_rows();
     $data['data'] = $this->m_model->get_data('karyawan')->result();
 		         $this->load->view('absensi/index', $data);
 	}
@@ -140,57 +140,13 @@ public function hapus_karyawan($id)
   }
 
 
-  public function dasboard()
-	{
-		$data['karyawan'] = $this->m_model->get_data('karyawan')->num_rows();
-		$data['absensi'] = $this->m_model->get_data('absensi')->num_rows();
-		$this->load->view('absensi/dasboard',$data);
-	}
-
-  
- // profil
- public function profil()
- { $data['title']='Account';
-  $data['admin'] = $this-> m_model->get_by_id('admin' , 'id' ,$this->session->userdata('id') )->result();
-  $this->load->view('absensi/profil', $data);
+ public function dasboard()
+ {
+  $this->load->view('absensi/dasboard');
  }
 
-
   
-    public function upload_image()
-{  
-    $base64_image = $this->input->post('base64_image');
-    $binary_image = base64_encode($base64_image);
-    $data = array(
-      'images' => $binary_image
-    );
-    $eksekusi = $this->m_model->ubah_data('admin', $data, array('id'=>$this->session->userdata('id')));
-    if($eksekusi) {
-        $this->session->set_flashdata('sukses' , 'berhasil');
-        redirect(base_url('absensi/profil'));
-    } else {
-        $this->session->set_flashdata('error' , 'gagal...');
-        echo "error gais";
-    }
-}
 
-// hapus image
-public function hapus_image()
-{ 
-    $data = array(
-      'image' => NULL
-    );
-    
-    $eksekusi = $this->m_model->update('admin', $data, array('id'=>$this->session->userdata('id')));
-    $eksekusi = $this->m_model->ubah_data('admin', $data, array('id'=>$this->session->userdata('id')));
-    if($eksekusi) {
-        $this->session->set_flashdata('sukses' , 'berhasil');
-        redirect(base_url('project/user'));
-      } else {
-        $this->session->set_flashdata('error' , 'gagal...');
-        echo "error gais";
-      }
-}
 public function ubah_password($id)
 {
   $data['admin'] = $this-> m_model->get_by_id('admin' , 'id' , $id)->result();
@@ -278,7 +234,9 @@ public function aksi_absensi()
 
 public function edit_profil()
 {
-  $this->load->view('absensi/edit_profil');
+  $data['user'] = $this-> m_model->get_by_id('admin' , 'id' ,$this->session->userdata('id') )->result();
+
+  $this->load->view('absensi/edit_profil',$data);
 }
  // export Karyawan
  public function export ()
@@ -454,9 +412,188 @@ public function rekap_b()
 		$this->load->view('absensi/rekap_b', $data);
 	}
 
+  
+  
+  
+  
+
+  public function upload_img($value)
+	{
+		$kode = round(microtime(true) * 1000);
+		$config['upload_path'] = './image/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		$config['max_size'] = '30000';
+		$config['file_name'] = $kode;
+		
+		$this->load->library('upload', $config); // Load library 'upload' with config
+		
+		if (!$this->upload->do_upload($value)) {
+			return array(false, '');
+		} else {
+      $fn = $this->upload->data();
+			$nama = $fn['file_name'];
+			return array(true, $nama);
+		}
+	}
+    public function aksi_edit_profil()
+    {
+        $images = $this->upload_img('image');
+        if ($images [0] == false) {
+            $password_baru = $this->input->post('password_baru');
+            $konfirmasi_password = $this->input->post('konfirmasi_password');
+            $email = $this->input->post('email');
+            $username = $this->input->post('username');
+            $nama_depan = $this->input->post('nama_depan');
+            $nama_belakang = $this->input->post('nama_belakang');
+            $data = [
+              'images' => 'User.png', // Ganti 'foto' menjadi 'image'
+              'email' => $email,
+                'username' => $username,
+                'nama_depan' => $nama_depan,
+                'nama_belakang' => $nama_belakang,
+            ];
+
+            
+            if (!empty($password_baru)) {
+                if ($password_baru === $konfirmasi_password) {
+                    $data['password'] = md5($password_baru);
+                } else {
+                    $this->session->set_flashdata('message', 'Password baru dan Konfirmasi password harus sama');
+                    redirect(base_url('absensi/profil'));
+                }
+            }
+            $this->session->set_userdata($data);
+            $update_result = $this->m_model->ubah_data('admin', $data, ['id' => $this->session->userdata('id')]);
+            
+            if ($update_result) {
+                redirect(base_url('absensi/profil'));
+            } else {
+                redirect(base_url('absensi/profil'));
+            }
+        } else {
+            $password_baru = $this->input->post('password_baru');
+            $konfirmasi_password = $this->input->post('konfirmasi_password');
+            $email = $this->input->post('email');
+            $username = $this->input->post('username');
+            $nama_depan = $this->input->post('nama_depan');
+            $nama_belakang = $this->input->post('nama_belakang');
+            $data = [
+                'foto' => $image[1],
+                'email' => $email,
+                'username' => $username,
+                'nama_depan' => $nama_depan,
+                'nama_belakang' => $nama_belakang,
+            ];
+            if (!empty($password_baru)) {
+                if ($password_baru === konfirmasi_password) {
+                    $data['password'] = md5($password_baru);
+                } else {
+                    $this->session->set_flashdata('message', 'Password baru dan Konfirmasi password harus sama');
+                    redirect(base_url('absensi/profil'));
+                }
+            }
+            $this->session->set_userdata($data);
+            $update_result = $this->m_model->update('admin', $data, ['id' => $this->session->userdata('id')]);
+
+            if ($update_result) {
+                redirect(base_url('absensi/profil'));
+              } else {
+                redirect(base_url('absensi/profil'));
+            }
+          }
+    }
+
+
+
+    
+
+    public function aksi_update_profile ()
+    {
+      $foto = $_FILES['foto']['name'];
+        $foto_temp = $_FILES['foto']['tmp_name'];
+        $username = $this->input->post('username');
+        $nama_depan = $this->input->post('nama_depan');
+        $nama_belakang = $this->input->post('nama_belakang');
+        // $foto = $this->upload_img('foto');
+        // Jika ada foto yang diunggah
+        if ($foto) {
+            $kode = round(microtime(true) * 900);
+            $file_name = $kode . '_' . $foto;
+            $upload_path = './image/' . $file_name;
+    
+            if (move_uploaded_file($foto_temp, $upload_path)) {
+                // Hapus foto lama jika ada
+                $old_file = $this->m_model->get_foto_by_id($this->input->post('id'));
+                if ($old_file && file_exists(' ./image/' . $old_file)) {
+                    unlink(' ./image/' . $old_file);
+                }
+    
+                $data = [
+                    'images' => $file_name,
+                    'username' => $username,
+                    'nama_depan' => $nama_depan,
+                    'nama_belakang' => $nama_belakang,
+                ];
+            } else {
+                // Gagal mengunggah foto baru
+                redirect(base_url('karyawan/dashboard'));
+            }
+        } else {
+            // Jika tidak ada foto yang diunggah
+            $data = [
+                'username' => $username,
+                'nama_depan' => $nama_depan,
+                'nama_belakang' => $nama_belakang,
+            ];
+        }
+        
+        // Eksekusi dengan model ubah_data
+        $update_result = $this->m_model->ubah_data('user', $data, array('id' => $this->session->userdata('id')));
+        
+        if ($update_result) {
+            $this->session->set_flashdata('sukses','<div class="alert alert-success alert-dismissible fade show" role="alert">
+            Berhasil Merubah Profile
+                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+               </div>');
+            redirect(base_url('karyawan/akun'));
+        } else {
+            redirect(base_url('karyawan/dashboard'));
+        }
+     
+    }
+
+
+
+    // profil
+    public function profil()
+    { $data['title']='Account';
+     $data['user'] = $this-> m_model->get_by_id('admin' , 'id' ,$this->session->userdata('id') )->result();
+     $this->load->view('absensi/profil', $data);
+    }
+    public function upload_image()
+    {  
+        $base64_image = $this->input->post('base64_image');
+        $binary_image = base64_encode($base64_image);
+        $data = array(
+          'images' => $binary_image
+        );
+        $eksekusi = $this->m_model->ubah_data('admin', $data, array('id'=>$this->session->userdata('id')));
+        if($eksekusi) {
+            $this->session->set_flashdata('sukses' , 'berhasil');
+            redirect(base_url('absensi/profil'));
+        } else {
+            $this->session->set_flashdata('error' , 'gagal...');
+            echo "error gais";
+        }
+    }
 
 
 
 
+
+
+
+
+ 
 }
 ?>

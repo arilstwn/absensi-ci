@@ -36,7 +36,7 @@
     
 
     #sidebar {
-        background-color: #44484e;
+        background-color: #208991;
 
         color: #ffffff;
         height: 100%;

@@ -391,10 +391,10 @@ if (isset($_POST['submit'])) {
                                     <a href="<?php echo base_url('absensi/history') ?>">Lihat Detail</a><br>
                                     </div>
                                 </div>
-                            </div>
-                                                    
+                            </div>                                   
                             <div class="col-md-7 mb-3">
                                 <div class="card shadow bg-D8D9DA text-black shadow border-10 rounded">
+                                    <br>
                                     <h3><b>Data Keseluruhan</b></h3>
                                     <hr>
                                     <div class="card-body d-flex align-items-center justify-content-between">
@@ -404,7 +404,7 @@ if (isset($_POST['submit'])) {
                                         </div>
                                         <div class="ml-auto"></div>
                                         <span style="font-size: 24px;">
-                                            <b><?php echo $absensi?></b>
+                                            <b><?php echo $admin?></b>  
                                         </span>
                                     </div>
                                     <hr>

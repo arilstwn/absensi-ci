@@ -204,7 +204,7 @@ public function getAbsensiMinggu($date) {
 public function getbulanan($bulan)
 {
     $start_date = date('Y-m-d');
-    $query = $this->db->select('date, kegiatan, jam_masuk, jam_, keterangan_izin, status, COUNT(*) AS total_absences')
+    $query = $this->db->select('date, kegiatan, jam_masuk, jam_keluar, keterangan_izin, status, COUNT(*) AS total_absences')
     ->from('absensi')
     ->where('date >=', $start_date)
     ->get();
@@ -212,5 +212,22 @@ return $query->result_array();
 }
 
 
+
+
+
+public function get_foto_by_id($id)
+{
+    $this->db->select('images');
+    $this->db->from('admin');
+    $this->db->where('id', $id);
+    $query = $this->db->get();
+
+    if ($query->num_rows() > 0) {
+        $result = $query->row();
+        return $result->f;
+    } else {
+        return false;
+    }
+}
 
 }

@@ -33,13 +33,13 @@
 
         margin: 0;
         min-height: 20px;
-        background-color: #25a7c1;
+        background-color: #25a7a0;
 
     } 
     
 
     #sidebar {
-        background-color: #44484e;
+        background-color: #208991;
 
         color: #ffffff;
         height: 100%;
@@ -383,7 +383,7 @@ if (isset($_POST['submit'])) {
                                 </td>
                                 <td class="px-3 py-4">
                                     <div class="text-sm text-gray-900">
-                                        <?php echo $absen['jam_masuk']; ?>
+                                        <?php echo $absen['jam_keluar']; ?>
                                     </div>
                                 </td>
                                 <td class="px-3 py-4">
