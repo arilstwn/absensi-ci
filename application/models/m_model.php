@@ -230,4 +230,13 @@ public function get_foto_by_id($id)
     }
 }
 
+public function aksi_ubah_perofil($table, $field, $id)
+{
+    $data=$this->db->aksi_ubah_profil($table, array($field => $id));
+    return $data;
+}
+
+
+
+
 }

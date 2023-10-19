@@ -8,6 +8,7 @@ class Absensi extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_model');
         $this->load->helper('my_helper');
+        $this->load->library('upload');
         if ($this->session->userdata('logged_in')!= true && $this->session->userdata('role') != 'karyawan') {
             redirect(base_url().'auth');
         }
@@ -23,6 +24,23 @@ class Absensi extends CI_Controller {
 		         $this->load->view('absensi/index', $data);
 	}
   
+// // //upload image
+// public function upload_img($value)
+// {
+//   $kode = round(microtime(true) * 1000);
+//   $config['upload_path'] = './images/siswa/';
+//   $config['allowed_types'] = '.jpg|png|jpeg';
+//   $config['max_size'] = '3000';
+//   $config['file_name'] = $kode;
+//   $this->upload->initialize($config);
+//   if (!$this->upload->do_upload($value)) {
+//     return array( false, '' );
+//   } else {
+//     $fn = $this->upload->data();
+//     $nama = $fn['file_name'];
+//     return array( true, $nama );
+//   }
+// }
 
 
 
@@ -567,28 +585,42 @@ public function rekap_b()
     // profil
     public function profil()
     { $data['title']='Account';
-     $data['user'] = $this-> m_model->get_by_id('admin' , 'id' ,$this->session->userdata('id') )->result();
+     $data['admin'] = $this-> m_model->get_by_id('admin' , 'id' ,$this->session->userdata('id') )->result();
      $this->load->view('absensi/profil', $data);
     }
-    public function upload_image()
-    {  
-        $base64_image = $this->input->post('base64_image');
-        $binary_image = base64_encode($base64_image);
-        $data = array(
-          'images' => $binary_image
-        );
-        $eksekusi = $this->m_model->ubah_data('admin', $data, array('id'=>$this->session->userdata('id')));
-        if($eksekusi) {
-            $this->session->set_flashdata('sukses' , 'berhasil');
-            redirect(base_url('absensi/profil'));
-        } else {
-            $this->session->set_flashdata('error' , 'gagal...');
-            echo "error gais";
-        }
+
+   
+    public function edit_foto()
+    {
+      $image = $this->upload_img('image');
+      if ($image[0] == false) {
+        $data = [
+          'images' => 'User.png',
+      
+        ];
+        $this->m_model->tambah_data('admin', $data);
+        redirect(base_url('absensi/profil'));
+      } else {
+        $data = [
+          'images' => $image[1],
+         
+        ];
+        $this->m_model->tambah_data('admin', $data);
+        redirect(base_url('absensi/profil'));
+      }
     }
 
-
-
+    public function pulang($id)
+    {
+        date_default_timezone_set('Asia/Jakarta');
+        $waktu_sekarang = date('Y-m-d H:i:s');
+        $data = [
+            'jam_keluar' => $waktu_sekarang,
+            'status' => 'done'
+        ];
+        $this->m_model->ubah_data('absensi', $data, array('id'=> $id));
+        redirect(base_url('absensi/history'));
+    }
 
 
 

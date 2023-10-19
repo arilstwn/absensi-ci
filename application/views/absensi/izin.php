@@ -140,13 +140,13 @@ p {
                   <span class="flex-1 ml-3 whitespace-nowrap">Home</span>
 </a>
 <!-- Admin -->
-<a href="<?php echo base_url('absensi') ?>">
+<!-- <a href="<?php echo base_url('absensi') ?>">
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
             <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
                  </svg>
                       <span class="flex-1 ml-3 whitespace-nowrap">Admin</span>
-</a>
+</a> -->
 <!-- Karyawan -->
 <a href="<?php echo base_url('absensi/karyawan') ?>">
  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
@@ -268,7 +268,7 @@ date_default_timezone_set("Asia/Bangkok");
 <section>
 <form method="post" action="<?php echo base_url('absensi/aksi_izin') ?>" enctype="multipart/form_data">
 <div class="overview shadow-lg p-4 mb-3 bg-body rounded">
-        <p class="text-gray-900 text-5xl dark:text-white"><b>bisa aja lu mas</b></p>
+        <p class="text-gray-900 text-5xl dark:text-white"><b>Silahkan isi jika ada keperluan</b></p>
                     <div class="wrapper d-flex flex-column">
                         <textarea id="izin" name="izin" placeholder="Izin..." required></textarea>
                     </div>

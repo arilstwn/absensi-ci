@@ -196,14 +196,14 @@ if (isset($_POST['submit'])) {
                       </svg>
                            <span class="flex-1 ml-3 whitespace-nowrap">Home</span>
         </a>
-      <!-- Admin -->
+      <!-- Admin
       <a href="<?php echo base_url('absensi') ?>">
            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                      <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
                           </svg>
                                <span class="flex-1 ml-3 whitespace-nowrap">Admin</span>
-     </a>
+     </a> -->
      <!-- Karyawan -->
      <a href="<?php echo base_url('absensi/karyawan') ?>">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
@@ -337,13 +337,17 @@ if (isset($_POST['submit'])) {
      
       <div id="content" role="main">
         <header class="flex justify-between items-center p-4 bg-white border-b-2 border-gray-200">
-            <h1 class="text-4xl">DATA KARYAWAN</h1>
+          <h1 class="text-4xl">DATA KARYAWAN  
+         </h1>
+          
+         
             <div class="flex items-center space-x-2">
 
             </div>
         </header>
         <br>
         <br>
+        
         
        
      
@@ -356,9 +360,9 @@ if (isset($_POST['submit'])) {
     <div class="card mb-4 shadow">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <div class="card shadow bg-D8D9DA text-black shadow border-10 rounded">
-                                    <h3><b>Data Karyawan</b></h3>
+                                    <h3><b>Data karyawan</b></h3>
                                     <hr>
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <div>
@@ -374,9 +378,9 @@ if (isset($_POST['submit'])) {
                                     <a href="<?php echo base_url('absensi/index') ?>">Lihat Detail</a><br>
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-4 mb-3">
                                 <div class="card shadow bg-D8D9DA text-black shadow border-10 rounded">
-                                    <h3><b>Data Absensi</b></h3>
+                                    <h3><b>Data absensi</b></h3>
                                     <hr>
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <div>
@@ -391,28 +395,28 @@ if (isset($_POST['submit'])) {
                                     <a href="<?php echo base_url('absensi/history') ?>">Lihat Detail</a><br>
                                     </div>
                                 </div>
-                            </div>                                   
-                            <div class="col-md-7 mb-3">
-                                <div class="card shadow bg-D8D9DA text-black shadow border-10 rounded">
-                                    <br>
-                                    <h3><b>Data Keseluruhan</b></h3>
+                                <div class="col-md-4 mb-3">
+                                  <div class="card shadow bg-D8D9DA text-black shadow border-10 rounded">
+                                    
+                                    <h3><b>Data keseluruhan</b></h3>
                                     <hr>
                                     <div class="card-body d-flex align-items-center justify-content-between">
-                                        <div>
+                                      <div>
                                         
                                         <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 2H6c-1.206 0-3 .799-3 3v14c0 2.201 1.794 3 3 3h15v-2H6.012C5.55 19.988 5 19.806 5 19c0-.101.009-.191.024-.273.112-.576.584-.717.988-.727H21V4a2 2 0 0 0-2-2zm0 9-2-1-2 1V4h4v7z"></path></svg>
-                                        </div>
-                                        <div class="ml-auto"></div>
-                                        <span style="font-size: 24px;">
-                                            <b><?php echo $admin?></b>  
-                                        </span>
+                                      </div>
+                                      <div class="ml-auto"></div>
+                                      <span style="font-size: 24px;">
+                                        <b><?php echo $admin?></b>  
+                                      </span>
                                     </div>
                                     <hr>
                                     <a href="<?php echo base_url('absensi/history') ?>">Lihat Detail</a><br>
-                                    </div>
+                                  </div>
                                 </div>
-                            </div>
-                            
+                              </div>
+                            </div>                                   
+                              
                                                     </center>
 
 
