@@ -147,41 +147,43 @@ button{
 <section>
         <div class="form-box">
             <div class="form-value">
-                <form action="">
-                    <h2>Register</h2>
+            <form class="content " action="<?php echo base_url('Auth/aksi_register_karyawan') ?>" method="post">
+                    <h2>Register Karyawan</h2>
                    
                    
                     <div class="inputbox">
                     <ion-icon name="person-circle-outline"></ion-icon>
-                        <input type="username" required>
-                        <label for="">Usrername</label>
+                        <input name="username" required>
+                        <label for="">Username</label>
                     </div>
                     <div class="inputbox">
                     <ion-icon name="person-outline"></ion-icon>
-                        <input type="first name" required>
-                        <label for="">First name</label>
+                        <input name="nama_depan" required>
+                        <label for="">Nama Depan</label>
                     </div>
                     <div class="inputbox">
                     <ion-icon name="person-outline"></ion-icon>
-                        <input type="last name" required>
-                        <label for="">Last name</label>
+                        <input name="nama_belakang" required>
+                        <label for="">Nama Belakang</label>
                     </div>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
-                        <input type="email" required>
+                        <input name="email" required>
                         <label for="">Email</label>
                     </div>
                     <div class="inputbox">
-                        <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="password" required>
-                        <label for="">Password</label>
-                    </div>
+                    <ion-icon name="key"></ion-icon>
+                            <input name="password" type="password" required>
+                            <i class="fa-solid fa-eye-slash toggle-password p-2"
+                            id="show-password"></i>
+                            <label for="">Password</label>
+                        </div>
                     <div class="forget">
                         <label for=""><input type="checkbox">Remember Me  <a href="#">Forget Password</a></label>
                       
                     </div>
                     
-                    <button href="<?php echo base_url('absensi/') ?>" class="btn btn-secondary">Masuk</button>
+                    <button type="submit" class="btn btn-primary">Masuk</button>
                     <div class="register">
                         <p>Don't have a account <a href="<?php echo base_url('auth/register') ?>">Register</a></p>
                     </div>

@@ -17,7 +17,7 @@
     }
 
     #sidebar {
-        background-color: #0C134F;
+        background-color: #185b58;
 
         color: #fff;
         height: 100%;
@@ -89,7 +89,7 @@
         object-fit: cover;
         border-radius: 20px;
 
-        background: #1d1b31;
+        background: #ffffff;
     }
 
     .profile-details .profile_name,
@@ -320,7 +320,7 @@
                     <div class="card-body d-flex text-white justify-content-between align-items-center"
                         style="background-color:#1D267D">
 
-                        <h1>Ubah Profile</h1>
+                        <h1>Ubah Info</h1>
                     </div>
                 </div>
 
@@ -362,7 +362,8 @@
                                     <input type="password" class="form-control" id="konfirmasi_password"
                                         name="konfirmasi_password" placeholder="Konfirmasi Password Baru">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-primary">Ubah</button>
+                                <a href="<?php echo base_url('absensi/profil') ?>" class="btn btn-danger">Kembali</a>
                             </form>
                         </div>
                     </div>

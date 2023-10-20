@@ -43,6 +43,9 @@ class M_model extends CI_Model{
     public function register($data) {
         $this->db->insert('admin', $data);
     }
+    public function register_karyawan($data) {
+        $this->db->insert('admin', $data);
+    }
     
     public function delete_pembayaran($table, $field, $id)
     {

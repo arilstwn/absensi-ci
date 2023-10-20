@@ -124,15 +124,41 @@ class Auth extends CI_Controller {
   }
 
 
-// Register Karyawan
-public function register_karyawan()
-{
+ public function register_karyawan()
+ {
     $this->load->view('auth/register_karyawan');
+ }
+ public function aksi_register_karyawan()
+  {
+    $data = [
+       
+        'username'      => $this->input->post('username'),
+        'nama_depan'    => $this->input->post('nama_depan'),
+        'nama_belakang' => $this->input->post('nama_belakang'),
+        'email'         => $this->input->post('email'),
+        'password' => md5($this->input->post('password')),
+        
+    ];
+
+    $this->m_model->register( $data);
+    redirect(base_url('auth/login'));
+  }
+
+
+
+
+
+
+
 }
 
 
 
 
-}
+
+
+
+
+
 
 ?>

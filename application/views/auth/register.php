@@ -40,7 +40,7 @@ section{
 .form-box{
     position: relative;
     width: 450px;
-    height: 650px;
+    height: 700px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
@@ -139,6 +139,24 @@ button{
 }
 
 </style>
+<script>
+       function generateShortPassword($length) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $password = '';
+
+    for ($i = 0; $i < $length; $i++) {
+        $index = rand(0, strlen($characters) - 1);
+        $password .= $characters[$index];
+    }
+
+    return $password;
+}
+
+// Contoh pemanggilan
+$shortPassword = generateShortPassword(6); // Ubah angka 6 sesuai dengan panjang yang Anda inginkan
+echo $shortPassword;
+</script>
+
 
 </head>
 
@@ -150,7 +168,7 @@ button{
                    
                    
                    <form class="content " action="<?php echo base_url('Auth/aksi_register') ?>" method="post">
-                    <h2>Register</h2>
+                    <h2>Register Admin</h2>
                     <div class="inputbox">
                     <ion-icon name="person"></ion-icon>
                         <input type="text" name="username" required>
@@ -163,30 +181,35 @@ button{
                         <label for="">Email</label>
                     </div>
 
+                    
                     <div class="inputbox">
-                    <ion-icon name="key"></ion-icon>
-                        <input type="text" name="password" required>
-                        <label for="">Password</label>
-                    </div>
-
-                    <div class="inputbox">
-                    <ion-icon name="person"></ion-icon>
+                        <ion-icon name="person"></ion-icon>
                         <input type="text" name="nama_depan" required>
                         <label for="">Nama Depan</label>
                     </div>
-
+                    
                     <div class="inputbox">
-                    <ion-icon name="person"></ion-icon>
+                        <ion-icon name="person"></ion-icon>
                         <input type="text" name="nama_belakang" required>
                         <label for="">Nama Belakang</label>
                     </div>
+                    <div class="d-flex flex-row align-items-center mb-4">
+
+                        <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                            <input name="password" type="password" required>
+                            <i class="fa-solid fa-eye-slash toggle-password p-2"
+                            id="show-password"></i>
+                            <label for="">Password</label>
+                        </div>
+                     </div>
 
                     <button type="submit" class="btn btn-primary">Register</button>
                     <br>
                     <br>
-                    <a href="<?php echo base_url('absensi/login') ?>" class="text-primary">Login</a>
+                    <a href="<?php echo base_url('auth/login') ?>" class="text-primary">Login</a>
                     <br>
-                    <a href="<?php echo base_url('absensi/register_karyawan') ?>">Register Karyawan </a>
+                    <a href="<?php echo base_url('auth/register_karyawan') ?>">Register Karyawan </a>
                     <br>
                     <div class="register">
                     </div>

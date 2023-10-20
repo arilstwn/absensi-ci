@@ -40,7 +40,7 @@ section{
 .form-box{
     position: relative;
     width: 400px;
-    height: 450px;
+    height: 470px;
     background: transparent;
     border: 2px solid rgba(255,255,255,0.5);
     border-radius: 20px;
@@ -63,7 +63,7 @@ h2{
 }
 .inputbox label{
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 5px;
     transform: translateY(-50%);
     color: #fff;
@@ -154,12 +154,20 @@ button{
                         <input name="email" type="email" required>
                         <label for="">Email</label>
                     </div>
-                    <div class="inputbox">
+                    <div class="d-flex flex-row align-items-center mb-4">
+
+                        <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input name="password" type="password" required>
-                        <label for="">Password</label>
-                    </div>
-                    <div class="forget">
+                            <input name="password" type="password" required>
+                            <i class="fa-solid fa-eye-slash toggle-password p-2"
+                            id="show-password"></i>
+                            <label for="">Password</label>
+                        </div>
+                     </div>
+
+                         <p class="forget">*Password harus memiliki 8 angka*</p> 
+                        <br>
+                     <div class="forget">
                         <label for=""><input type="checkbox">Remember Me  <a href="#">Forget Password</a></label>
                       
                     </div>
@@ -175,5 +183,21 @@ button{
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
-</body>
+<script>
+var passwordInput = document.getElementById('password');
+var togglePassword = document.getElementById('show-password');
+
+togglePassword.addEventListener('click', function() {
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        togglePassword.classList.remove('fa-eye-slash');
+        togglePassword.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        togglePassword.classList.remove('fa-eye');
+        togglePassword.classList.add('fa-eye-slash');
+    }
+});
+</script>
+
 </html>
