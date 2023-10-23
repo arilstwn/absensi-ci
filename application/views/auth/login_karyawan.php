@@ -13,7 +13,7 @@
    
    <style>
         body {
-          background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/2780767c-1e4e-4a64-af2b-1f5fa8e7b082/dehkxn1-c4ced58b-f49e-4879-b9d1-202490ec83cd.jpg/v1/fill/w_1192,h_670,q_70,strp/old_runes_by_kvacm_dehkxn1-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvMjc4MDc2N2MtMWU0ZS00YTY0LWFmMmItMWY1ZmE4ZTdiMDgyXC9kZWhreG4xLWM0Y2VkNThiLWY0OWUtNDg3OS1iOWQxLTIwMjQ5MGVjODNjZC5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.6Z-wjmB2fkOTTm0T4VEnex7g0LekXBy2_KFbhFJ_mBw');
+          background-image: url('https://www.teahub.io/photos/full/69-699432_retro-wave-wallpaper-hd.jpg');
           background-repeat: no-repeat;
           background-attachment: fixed; 
           background-size: 100% 100%;
@@ -22,8 +22,8 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 *{
-    margin: 10;
-    padding: 10;
+    margin: 0;
+    padding: 0;
     font-family: 'poppins',sans-serif;
 }
 section{
@@ -39,10 +39,10 @@ section{
 }
 .form-box{
     position: relative;
-    width: 450px;
-    height: 650px;
+    width: 340px;
+    height: 450px;
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255,255,255,0.5);
     border-radius: 20px;
     backdrop-filter: blur(15px);
     display: flex;
@@ -63,7 +63,7 @@ h2{
 }
 .inputbox label{
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 5px;
     transform: translateY(-50%);
     color: #fff;
@@ -92,7 +92,6 @@ top: -5px;
     font-size: 1.2em;
     top: 20px;
 }
-
 .forget{
     margin: -15px 0 15px ;
     font-size: .9em;
@@ -145,43 +144,29 @@ button{
 <body>
     
 <section>
-        <div class="form-box">
+    
+        <div class="form-box ">
             <div class="form-value">
-            <form class="content " action="<?php echo base_url('Auth/aksi_register') ?>" method="post">
-                    <h2>Register Karyawan</h2>
-                   
-                   
-                    <div class="inputbox">
-                    <ion-icon name="person-circle-outline"></ion-icon>
-                        <input name="username" required>
-                        <label for="">Username</label>
-                    </div>
-                    <div class="inputbox">
-                    <ion-icon name="person-outline"></ion-icon>
-                        <input name="nama_depan" required>
-                        <label for="">Nama Depan</label>
-                    </div>
-                    <div class="inputbox">
-                    <ion-icon name="person-outline"></ion-icon>
-                        <input name="nama_belakang" required>
-                        <label for="">Nama Belakang</label>
-                    </div>
+            <form method="post" action="<?php echo base_url('auth/aksi_login_karyawan') ?>">
+                    <h2>Login</h2>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
-                        <input name="email" required>
+                        <input name="email" type="email" required>
                         <label for="">Email</label>
                     </div>
-                    <div class="inputbox">
-                    <ion-icon name="lock-closed-outline"></ion-icon>>
+
+                        <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
                             <input name="password" type="password" required>
                             <label for="">Password</label>
                         </div>
-                    <div class="forget">
+                        <br>
+                     <div class="forget">
                         <label for=""><input type="checkbox">Remember Me  <a href="#">Forget Password</a></label>
                       
                     </div>
                     
-                    <button type="submit" class="btn btn-primary">Masuk</button>
+                    <button type="submit"class="btn btn-secondary">Login</button>
                     <div class="register">
                         <p>Don't have a account <a href="<?php echo base_url('auth/register') ?>">Register</a></p>
                     </div>
@@ -192,5 +177,21 @@ button{
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
-</body>
+<script>
+var passwordInput = document.getElementById('password');
+var togglePassword = document.getElementById('show-password');
+
+togglePassword.addEventListener('click', function() {
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        togglePassword.classList.remove('fa-eye-slash');
+        togglePassword.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        togglePassword.classList.remove('fa-eye');
+        togglePassword.classList.add('fa-eye-slash');
+    }
+});
+</script>
+
 </html>

@@ -10,9 +10,9 @@ class Admin extends CI_Controller {
 		$this->load->model('m_model');
         $this->load->helper('my_helper');
 		$this->load->library('upload');
-        if ($this->session->userdata('logged_in')!= true && $this->session->userdata('role') != 'index') {
-            redirect(base_url().'auth');
-        }
+        // if ($this->session->userdata('logged_in')!= true && $this->session->userdata('role') != 'index') {
+        //     redirect(base_url().'auth');
+        // }
 	}
 
 
@@ -86,7 +86,7 @@ class Admin extends CI_Controller {
 		   ]
 		 ];
 	
-		 $sheet->setCellValue('A1', "DATA PEMBAYARAN");
+		 $sheet->setCellValue('A1', "DATA MINGGUAN");
 		 $sheet->mergeCells('A1:E1');
 		 $sheet->getStyle('A1')->getFont()->setBold(true);
 	
@@ -144,7 +144,7 @@ class Admin extends CI_Controller {
 		 $sheet->setTitle("LAPORAN DATA KARYAWAN");
 	
 		 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-		 header('Content-Disposition: attachment; filename=".xlsx"');
+		 header('Content-Disposition: attachment; filename="MINGGUAN.xlsx"');
 		 header('Cache-Control: max-age=');
 	
 		 $writer = new Xlsx($spreadsheet);
@@ -184,7 +184,7 @@ class Admin extends CI_Controller {
                 ]
             ];
 
-            $sheet->setCellValue( 'A1', 'DATA KARYAWAN' );
+            $sheet->setCellValue( 'A1', 'DATA BULANAN' );
             $sheet->mergeCells( 'A1:E1' );
             $sheet->getStyle( 'A1' )->getFont()->setBold( true );
 
@@ -255,7 +255,7 @@ class Admin extends CI_Controller {
             $sheet->setTitle( 'LAPORAN DATA BULANAN' );
 
             header( 'Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' );
-            header( 'Content-Disposition: attachment; filename="absensi.xlsx"' );
+            header( 'Content-Disposition: attachment; filename="BULANAN.xlsx"' );
             header( 'Cache-Control: max-age=0' );
 
             $writer = new Xlsx( $spreadsheet );
@@ -456,7 +456,7 @@ class Admin extends CI_Controller {
             
             // Set header HTTP untuk mengunduh file Excel
             header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-            header('Content-Disposition: attachment;filename="' . $filename . '"');
+            header('Content-Disposition: attachment;filename="HARIAN' . $filename . '"');
             header('Cache-Control: max-age=0');
             
             // Outputkan file Excel ke browser
@@ -555,7 +555,7 @@ class Admin extends CI_Controller {
             
             // Set header HTTP untuk mengunduh file Excel
             header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-            header('Content-Disposition: attachment;filename="' . $filename . '"');
+            header('Content-Disposition: attachment;filename="MINGGUAN' . $filename . '"');
             header('Cache-Control: max-age=0');
             
             // Outputkan file Excel ke browser
@@ -672,31 +672,6 @@ class Admin extends CI_Controller {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		public function export_seluruh() {
 
             // Load autoloader Composer
@@ -797,7 +772,178 @@ class Admin extends CI_Controller {
             $writer->save('php://output');
             
         }
-            
+        
+
+        public function upload_img($value)
+        {
+            $kode = round(microtime(true) * 1000);
+            $config['upload_path'] = './images/admin/';
+            $config['allowed_types'] = 'jpg|png|jpeg';
+            $config['max_size'] = '3000';
+            $config['fle_name'] = $kode;
+            $this->upload->initialize($config);
+            if (!$this->upload->do_upload($value)) {
+                return [false, ''];
+            } else {
+                $fn = $this->upload->data();
+                $nama = $fn['file_name'];
+                return [true, $nama];
+            }
+        }
+
+
+
+// akun
+// public function akun()
+// {         
+//     $data['user'] = $this->m_model->get_by_id('admin', 'id', $this->session->userdata('id'))->result();
+//     // var_dump($data['user']);
+//     $this->load->view('admin/akun', $data);
+
+// }
+
+  
+ 
+
+public function akun()
+    {
+        $data['akun'] = $this->admin_model->get_by_id('admin', 'id', $this->session->userdata('id'))->result();
+        $this->load->view('admin/akun', $data);
+    }
+
+    public function edit_profile()
+	{
+		$password_lama = $this->input->post('password_lama');
+		$password_baru = $this->input->post('password_baru');
+		$konfirmasi_password = $this->input->post('konfirmasi_password');
+		$email = $this->input->post('email');
+		$username = $this->input->post('username');
+		$nama_depan = $this->input->post('nama_depan');
+		$nama_belakang = $this->input->post('nama_belakang');
+
+		$data = array(
+			'email' => $email,
+			'username' => $username,
+			'nama_depan' => $nama_depan,
+			'nama_belakang' => $nama_belakang,
+		);
+
+		$stored_password = $this->admin_model->getPasswordById($this->session->userdata('id')); // Ganti dengan metode sesuai dengan struktur database Anda
+        if (md5($password_lama) != $stored_password) {
+            $this->session->set_flashdata('kesalahan_password_lama', 'Password lama yang dimasukkan salah');
+            redirect(base_url('admin/profile'));
+        } else {
+            if (!empty($password_baru)) {
+                if ($password_baru === $konfirmasi_password) {
+                    $data['password'] = md5($password_baru);
+                    $this->session->set_flashdata('ubah_password', 'Berhasil mengubah password');
+                } else {
+                    $this->session->set_flashdata('kesalahan_password', 'Password baru dan Konfirmasi password tidak sama');
+                    redirect(base_url('admin/profile'));
+                }
+            }
+        }
+
+		$this->session->set_userdata($data);
+		$update_result = $this->admin_model->update_data('users', $data, array('id' => $this->session->userdata('id')));
+
+		if ($update_result) {
+			$this->session->set_flashdata('update_user', 'Data berhasil diperbarui');
+			redirect(base_url('admin/profile'));
+		} else {
+			$this->session->set_flashdata('gagal_update', 'Gagal memperbarui data');
+			redirect(base_url('admin/profile'));
+		}
+	}
+
+    public function edit_image()
+    {
+        $image = $_FILES['image']['name'];
+        $image_temp = $_FILES['image']['tmp_name'];
+
+        // Jika ada image yang diunggah
+        if ($image) {
+            $kode = round(microtime(true) * 1000);
+            $file_name = $kode . '_' . $image;
+            $upload_path = './images/admin/' . $file_name;
+            $this->session->set_flashdata('berhasil_ubah_foto', 'Foto berhasil diperbarui.');
+            if (move_uploaded_file($image_temp, $upload_path)) {
+                // Hapus image lama jika ada
+                $old_file = $this->admin_model->get_karyawan_image_by_id($this->input->post('id'));
+                if ($old_file && file_exists('./images/admin/' . $old_file)) {
+                    unlink('./images/admin/' . $old_file);
+                }
+
+                $data = [
+                    'image' => $file_name
+                ];
+            } else {
+                // Gagal mengunggah image baru
+                redirect(base_url('admin/ubah_image/' . $this->input->post('id')));
+            }
+        } else {
+            // Jika tidak ada image yang diunggah
+            $data = [
+                'image' => 'User.png'
+            ];
+        }
+
+        // Eksekusi dengan model ubah_data
+        $eksekusi = $this->admin_model->ubah_data('users', $data, array('id' => $this->input->post('id')));
+
+        if ($eksekusi) {
+            redirect(base_url('admin/profile'));
+        } else {
+            redirect(base_url('admin/ubah_image/' . $this->input->post('id')));
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     // Anda juga dapat menambahkan logika lain jika perlu
 
 }	

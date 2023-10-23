@@ -218,7 +218,7 @@ return $query->result_array();
 
 
 
-public function get_foto_by_id($id)
+public function get_profil_by_id($id)
 {
     $this->db->select('images');
     $this->db->from('admin');
@@ -233,11 +233,147 @@ public function get_foto_by_id($id)
     }
 }
 
+
+
+
+
+
 public function aksi_ubah_perofil($table, $field, $id)
 {
     $data=$this->db->aksi_ubah_profil($table, array($field => $id));
     return $data;
 }
+
+
+public function get_karyawan_image_by_id($id)
+            {
+                $this->db->select('image');
+                $this->db->from('users');
+                $this->db->where('id', $id);
+                $query = $this->db->get();
+        
+                if ($query->num_rows() > 0) {
+                    $result = $query->row();
+                    return $result->image;
+                } else {
+                    return false;
+                }
+            }
+            public function update_image($akun_id, $new_image)
+            {
+                $data = array(
+                    'image' => $new_image
+                );
+        
+                $this->db->where('id', $karyawan_id); // Sesuaikan dengan kolom dan nama tabel yang sesuai
+                $this->db->update('users', $data); // Sesuaikan dengan nama tabel Anda
+        
+                return $this->db->affected_rows(); // Mengembalikan jumlah baris yang diupdate
+            }
+        
+            public function get_current_image($karyawan_id)
+            {
+                $this->db->select('image');
+                $this->db->from('users'); // Gantilah 'akun_table' dengan nama tabel Anda
+                $this->db->where('id', $karyawan_id);
+                $query = $this->db->get();
+        
+                if ($query->num_rows() > 0) {
+                    $row = $query->row();
+                    return $row->image;
+                }
+        
+                return null; // Kembalikan null jika data tidak ditemukan
+            }
+
+
+
+
+
+
+            public function get_akun_image_by_id($id)
+            {
+                $this->db->select('image');
+                $this->db->from('users');
+                $this->db->where('id', $id);
+                $query = $this->db->get();
+        
+                if ($query->num_rows() > 0) {
+                    $result = $query->row();
+                    return $result->image;
+                } else {
+                    return false;
+                }
+            }
+            public function update_images($akun_id, $new_image)
+            {
+                $data = array(
+                    'image' => $new_image
+                );
+        
+                $this->db->where('id', $admin_id); // Sesuaikan dengan kolom dan nama tabel yang sesuai
+                $this->db->update('users', $data); // Sesuaikan dengan nama tabel Anda
+        
+                return $this->db->affected_rows(); // Mengembalikan jumlah baris yang diupdate
+            }
+        
+
+            public function image_akun()
+            {
+                $id_karyawan = $this->session->akundata('id');
+                $this->db->select('image');
+                $this->db->from('users');
+                $this->db->where('id_karyawan');
+                $query = $this->db->get();
+        
+                if ($query->num_rows() > 0) {
+                    $result = $query->row();
+                    return $result->image;
+                } else {
+                    return false;
+                }
+            }
+            
+            public function get_admin_image_by_id($id)
+            {
+                $this->db->select('image');
+                $this->db->from('users');
+                $this->db->where('id', $id);
+                $query = $this->db->get();
+        
+                if ($query->num_rows() > 0) {
+                    $result = $query->row();
+                    return $result->image;
+                } else {
+                    return false;
+                }
+            }
+            public function update_imagess($akun_id, $new_image)
+            {
+                $data = array(
+                    'image' => $new_image
+                );
+        
+                $this->db->where('id', $akun_id); // Sesuaikan dengan kolom dan nama tabel yang sesuai
+                $this->db->update('users', $data); // Sesuaikan dengan nama tabel Anda
+        
+                return $this->db->affected_rows(); // Mengembalikan jumlah baris yang diupdate
+            }
+        
+            public function get_current_images($akun_id)
+            {
+                $this->db->select('image');
+                $this->db->from('users'); // Gantilah 'akun_table' dengan nama tabel Anda
+                $this->db->where('id', $akun_id);
+                $query = $this->db->get();
+        
+                if ($query->num_rows() > 0) {
+                    $row = $query->row();
+                    return $row->image;
+                }
+        
+                return null; // Kembalikan null jika data tidak ditemukan
+            }
 
 
 

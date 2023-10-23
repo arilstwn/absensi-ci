@@ -94,7 +94,7 @@ class Auth extends CI_Controller {
     }
 	function logout() {
       $this->session->sess_destroy();
-	  redirect(base_url(register));
+	  redirect(base_url('auth/login'));
 	}
       
 
@@ -116,6 +116,7 @@ class Auth extends CI_Controller {
         'nama_belakang' => $this->input->post('nama_belakang'),
         'email'         => $this->input->post('email'),
         'password'      => $this->input->post('password'),
+        'role'      => 'admin',
         
     ];
 
@@ -137,6 +138,7 @@ class Auth extends CI_Controller {
         'nama_belakang' => $this->input->post('nama_belakang'),
         'email'         => $this->input->post('email'),
         'password' => md5($this->input->post('password')),
+        'role' => 'karyawan',
         
     ];
 
@@ -150,7 +152,40 @@ class Auth extends CI_Controller {
 
 
 
+// Login
+public function login_karyawan()
+{
+    $this->load->view('auth/login_karyawan');
 }
+public function aksi_login_karyawan()
+{
+    $email = $this->input->post('email', true);
+    $password = $this->input->post('password', true);
+    $data = ['email' => $email,];
+    $query = $this->m_model->getwhere('admin', $data);
+    $result = $query->row_array();
+
+    if (!empty($result) && md5($password) === $result['password']) {
+        $data = [
+            'logged_in' => true,
+            'email'     => $result['email'],
+            'username'  => $result['username'],
+            'role'      => $result['role'],
+            'id'        => $result['id'],
+        ];
+        $this->session->set_userdata($data);
+        if ($this->session->userdata('role') == 'admin') {
+            redirect(base_url('admin'));
+        }elseif ($this->session->userdata('role') == 'karyawan') {
+        redirect(base_url('absensi/index'))  ;
+        } else {
+            redirect(base_url('auth/login_karyawan'));
+        }
+    } else {
+        redirect(base_url('Absensi/index'));
+    }
+}
+ 
 
 
 
@@ -161,4 +196,5 @@ class Auth extends CI_Controller {
 
 
 
+}
 ?>

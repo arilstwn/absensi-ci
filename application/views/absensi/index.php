@@ -190,13 +190,13 @@ if (isset($_POST['submit'])) {
                            <span class="flex-1 ml-3 whitespace-nowrap">Home</span>
         </a>
      
-     <!-- Karyawan
+   
      <a href="<?php echo base_url('absensi/karyawan') ?>">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
                     </svg>
                           <span class="flex-1 ml-3 whitespace-nowrap">Karyawan</span>
-        </a> -->
+        </a>
 
         </li>
         <!-- Absensi -->
@@ -240,90 +240,105 @@ if (isset($_POST['submit'])) {
                           </svg>
                                <span class="flex-1 ml-3 whitespace-nowrap">Edit Profil</span>
      </a>
-      <i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>
-          <?php
+
+     
+     
+     
+     <i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>
+     <?php
        date_default_timezone_set("Asia/jakarta");
-         ?>
+       ?>
 
-             <script type="text/javascript">
-                  function date_time(id)
+<script type="text/javascript">
+  function date_time(id)
         {
-            date   = new Date;
-            year   = date.getFullYear(); 
-            month  = date.getMonth();
-            months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
-            d      = date.getDate();
+          date   = new Date;
+          year   = date.getFullYear(); 
+          month  = date.getMonth();
+          months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
+          d      = date.getDate();
             day    = date.getDay();
-            days   = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+            days   = new Array('January', 'indonesia', 'March', 'April', 'May', 'Juni', 'jully');
             h      = date.getHours();
-                   if(h<10)
-                   {
-                    h = "0"+h;
-                         }
-                        m = date.getMinutes();
-                       if(m<10)
-                         {
-                           m = "0"+m;
-                         }
-                             s = date.getSeconds();
-                               if(s<10)
-                                   {
+            if(h<10)
+            {
+              h = "0"+h;
+            }
+            m = date.getMinutes();
+            if(m<10)
+            {
+              m = "0"+m;
+            }
+            s = date.getSeconds();
+            if(s<10)
+            {
                                   s = "0"+s;
-                                 }
-                    result = ''+days[day]+' '+d+' '+months[month]+' '+year+' '+h+':'+m+':'+s;
-                           document.getElementById(id).innerHTML = result;
-                                    setTimeout('date_time("'+id+'");','1000');
-                                              return true;
-                                                      }
-                                                    </script>
+                                }
+                                result = ''+days[day]+' '+d+' '+months[month]+' '+year+' '+h+':'+m+':'+s;
+                                document.getElementById(id).innerHTML = result;
+                                setTimeout('date_time("'+id+'");','1000');
+                                return true;
+                              }
+                              </script>
 
-                                <span id="date_time"></span>
-                                                       <script type="text/javascript">window.onload = date_time('date_time');</script>
-            
-       
-        <aside id="separator-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+<span id="date_time"></span>
+<script type="text/javascript">window.onload = date_time('date_time');</script>
+
+
+<aside id="separator-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
               <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-                  <ul class="space-y-2 font-medium">
-                     </svg>
-                     <hr>
-               
-            
-        
-         
-                          <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"> 
-        
-            </a>
-           
-         
-                          <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-            
-               
-            </a>
-          
-         
-        
-                           <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-           
-              
-            </a>
-          
-           
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <a href="<?php echo base_url('auth/login') ?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-           <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-                    </svg>
-                         <span class="flex-1 ml-3 whitespace-nowrap">Log out</span>
+                <ul class="space-y-2 font-medium">
+                  </svg>
+                  <hr>
+                  
+                  
+                  
+                  
+                  <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"> 
+                    
+                    </a>
+                    
+                    
+                    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                      
+                      
+                      </a>
+                      
+                      
+                      
+                      <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        
+                        
+                        </a>
+                        
+                        
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        
+                      
+                        
+                        
+                      
+   
+                <a class="btn btn-lg   " onclick=" logout(id)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+       <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+           </svg>
+                         <span class="link-name">Log Out</span>
+                     </a>
+      
+                 
+
+
+
 
         </a>
         
@@ -332,7 +347,7 @@ if (isset($_POST['submit'])) {
      
       <div id="content" role="main">
         <header class="flex justify-between items-center p-4 bg-white border-b-2 border-gray-200">
-          <h1 class="text-4xl">DATA KARYAWAN  
+          <h1 class="text-4xl">DASHBOARD  
          </h1>
           
          
@@ -424,8 +439,10 @@ if (isset($_POST['submit'])) {
 
 
 
-
-                            <a href="<?php echo base_url('absensi/export') ?>" class="btn btn-info">Export</a>
+<hr>
+                            <!-- <a href="<?php echo base_url('absensi/export') ?>" class="btn btn-success">Export</a> -->
+                            <!-- <a href="<?php echo base_url('absensi/export') ?>" class="btn btn-success">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M18 22a2 2 0 0 0 2-2v-5l-5 4v-3H8v-2h7v-3l5 4V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12zM13 4l5 5h-5V4z"></path></svg>Export</a> -->
                             <!-- Data Modal -->
                             <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                    Modal
@@ -521,5 +538,30 @@ if (isset($_POST['submit'])) {
      
     
 </body>
+<script>
+function logout(id) {
+    swal.fire({
+        title: ' Yakin Ingin Log Out',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Log Out'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Log Out',
+                showConfirmButton: false,
+                timer: 1500,
 
+            }).then(function() {
+                window.location.href = "<?php echo base_url('auth/logout/')?>" + id;
+            });
+        }
+    });
+}
+</script>
 </html>

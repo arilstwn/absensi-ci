@@ -179,7 +179,7 @@ date_default_timezone_set("Asia/Bangkok");
    months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
    d      = date.getDate();
    day    = date.getDay();
-   days   = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+   days   = new Array('January', 'indonesia', 'March', 'April', 'May', 'Juni', 'jully');
    h      = date.getHours();
           if(h<10)
           {
@@ -246,12 +246,13 @@ date_default_timezone_set("Asia/Bangkok");
   <br>
   
 
-<a href="<?php echo base_url('auth/login') ?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+  <a class="btn btn-lg   " onclick=" logout(id)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
            </svg>
-                <span class="flex-1 ml-3 whitespace-nowrap">Log out</span>
+                         <span class="link-name">Log Out</span>
+                     </a>
 
 </a>
 
@@ -260,9 +261,11 @@ date_default_timezone_set("Asia/Bangkok");
 
             
             <div id="content" role="main">
+                <?php echo $this->session->flashdata('sukses') ?>
+                <?php echo $this->session->flashdata('message') ?>
                 <div class="card mb-4 shadow">
                     <div class="card-body d-flex text-white justify-content-between align-items-center"
-                        style="background-color:#1D267D">
+                        style="background-color:#2ab3ac">
                         <h1>Profile</h1>
                      
                   
@@ -272,8 +275,9 @@ date_default_timezone_set("Asia/Bangkok");
                     </div>
                                             </div>
              
-                <section class="">
-                    <div class="">
+                                            <div class="overview shadow-lg p-1 mb-3 bg-body rounded">
+                <section class="card-body text-center">
+                    <div class="home-content">
                     </div>
                     <div class="card">
                         <div class="card-body text-center">
@@ -287,9 +291,10 @@ date_default_timezone_set("Asia/Bangkok");
                     <img class="rounded-circle" height="150" width="150" src="<?php echo $row->foto;?>">
                     <?php else: ?>
                     <img class="rounded-circle" height="150" width="150"
-                        src="https://i.pinimg.com/1200x/1b/57/72/1b5772a1f4a0fa72e275684edb4e660b.jpg" />
+                        src="https://i.pinimg.com/originals/ca/df/24/cadf2484ff610b5bfbd3debcdb9debaf.jpg" />
                     <?php endif;?>
                 </button>
+               
                 <form method="post" action="<?php echo base_url('absensi/edit_foto') ?>" enctype="multipart/form_data">
            
                     <div class="d-flex flex-row ">  
@@ -319,12 +324,15 @@ date_default_timezone_set("Asia/Bangkok");
                                         </div>
                                       
                                     </div>
+                                    
                                 </div>
                             </div>
                          
                         </div>
-                     
+                        </div>
+                        
                     </form>
+                    
                 </center>
                 
              
@@ -348,10 +356,192 @@ date_default_timezone_set("Asia/Bangkok");
                 </div>
                 
             </div>
+           
+                <section class="home-section">
+                    <div class="home-content">
+
+                    </div>
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <form action="<?= base_url('absensi/aksi_profil'); ?>" method="post">
+                                <div class="mb-8">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="username" name="username"
+                                        placeholder="Username Anda">
+                                </div>
+                                <div class="mb-8">
+                                    <label for="nama_depan" class="form-label">Nama Depan</label>
+                                    <input type="text" class="form-control" id="nama_depan" name="nama_depan"
+                                        placeholder="Nama Depan Anda">
+                                </div>
+                                <div class="mb-8">
+                                    <label for="nama_belakang" class="form-label">Nama Belakang</label>
+                                    <input type="text" class="form-control" id="nama_belakang" name="nama_belakang"
+                                        placeholder="Nama Belakang Anda">
+                                </div>
+                                <div class="mb-8">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email"
+                                        placeholder="email@anda.com">
+                                </div>
+                                <!-- <div class="mb-3">
+                                    <label for="password_baru" class="form-label">Password Baru</label>
+                                    <input type="password" class="form-control" id="password_baru" name="password_baru"
+                                        placeholder="Masukan Password Baru">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="konfirmasi_password" class="form-label">Konfirmasi Password
+                                        Baru</label>
+                                    <input type="password" class="form-control" id="konfirmasi_password"
+                                        name="konfirmasi_password" placeholder="Konfirmasi Password Baru">
+                                </div> -->
+                                <button type="submit" class="btn btn-primary">Ubah</button>
+                                <a href="<?php echo base_url('absensi/profil') ?>" class="btn btn-danger">Kembali</a>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        </section>
+        <br>
+        <br>
+        <div class="overview shadow-lg p-1 mb-3 bg-body rounded">
+
+
+<div class="title ">
+    <span class="text ">Password</span>
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="overflow-auto" style="white-space: nowrap;">
+
+                <form action="<?php echo base_url('absensi/ubah_password'); ?>"
+                    enctype="multipart/form-data" method="post">
+                    <div class="overview shadow-lg p-1 mb-3 bg-body rounded">
+                        <div class="d-flex form-outline flex-fill mb-0  ">
+                            <input type="password" name="password_lama" id="password1"
+                                class="form-control relaltive" placeholder="Password Lama">
+
+                            <button type="button" id="showPassword1"
+                                onclick="togglePasswordVisibility('password1')"
+                                class="far fa-eye-slash absolute p-2"></button>
+
+
+
+
+
+                            <input type="password" name="konfirmasi_password" id="password2"
+                                class="form-control relative" placeholder="Konfirmasi Password">
+                            <button type="button" id="showPassword2"
+                                onclick="togglePasswordVisibility('password2')"
+                                class="far fa-eye-slash absolute p-2"></button>
+
+
+
+                        </div><br>
+                        <div class="d-flex form-outline flex-fill col-6  ">
+                            <input type="password" name="password_baru" id="password3"
+                                class="form-control relaltive" placeholder="Password Baru">
+
+                            <button type="button" id="showPassword3"
+                                onclick="togglePasswordVisibility('password3')"
+                                class="far fa-eye-slash absolute p-2"></button>
+
+
+
+
+
+
+
+
+
+                        </div>
+
+                        <p>*Password harus memiliki 8 angka</p>
+                    </div>
+
+
+                    <div class="d-flex p-2 row justify-content-evenly ">
+                        <button type="submit" class="btn btn-sm btn-dark col-5" name=" submit">Ubah
+                            Password</button>
+
+
+                    </div>
+
+                    <br>
+
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+
+
+
+        <script>
+        const arrows = document.querySelectorAll(".arrow");
+
+        arrows.forEach((arrow) => {
+            arrow.addEventListener("click", (e) => {
+                const arrowParent = e.target.closest(".arrow").parentElement.parentElement;
+                arrowParent.classList.toggle("showMenu");
+            });
+        });
+
+        const sidebar = document.querySelector(".sidebar");
+        const sidebarBtn = document.querySelector(".fa-bars");
+
+        sidebarBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <!-- LOGOUT -->
+        <script>
+        function confirmLogout() {
+            Swal.fire({
+                title: 'Yakin mau LogOut?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "<?php echo base_url('auth/login') ?>";
+                }
+            });
+        }
+        </script>
+        <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById("sidebar");
+            var content = document.getElementById("content");
+            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+            content.style.marginLeft = content.style.marginLeft === "250px" ? "0" : "250px";
+        }
+        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
              
         </section>
-        <a href="<?php echo base_url('absensi/edit_profil') ?>" class="btn btn-danger">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path><path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path></svg> Ubah Profile</a>
+        <!-- <a href="<?php echo base_url('absensi/edit_profil') ?>" class="btn btn-danger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path><path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path></svg> Ubah Profile</a> -->
                 
 
                     
@@ -386,7 +576,7 @@ date_default_timezone_set("Asia/Bangkok");
                 cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "<?php echo base_url('/') ?>";
+                    window.location.href = "<?php echo base_url('auth/login') ?>";
                 }
             });
         }
@@ -407,4 +597,30 @@ date_default_timezone_set("Asia/Bangkok");
         </script>
         
 </body>
+<script>
+function logout(id) {
+    swal.fire({
+        title: ' Yakin Ingin Log Out',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Log Out'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Log Out',
+                showConfirmButton: false,
+                timer: 1500,
+
+            }).then(function() {
+                window.location.href = "<?php echo base_url('auth/logout/')?>" + id;
+            });
+        }
+    });
+}
+</script>
 </html>

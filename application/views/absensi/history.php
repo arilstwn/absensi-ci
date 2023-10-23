@@ -234,7 +234,7 @@ if (isset($_POST['submit'])) {
             months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
             d      = date.getDate();
             day    = date.getDay();
-            days   = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+            days   = new Array('January', 'indonesia', 'March', 'April', 'May', 'Juni', 'jully');
             h      = date.getHours();
                    if(h<10)
                    {
@@ -303,7 +303,7 @@ if (isset($_POST['submit'])) {
      
       <div id="content" role="main">
         <header class="flex justify-between items-center p-4 bg-white border-b-2 border-gray-200">
-            <h1 class="text-4xl">HISTORY KARYAWAN </h1>
+            <h1 class="text-4xl">HISTORY  </h1>
             <div class="flex items-center space-x-2">
 
             </div>
@@ -315,8 +315,10 @@ if (isset($_POST['submit'])) {
    
                    
              <!-- Tbel Kryawan -->
-             
-             <a href="<?php echo base_url('absensi/export_absensi') ?>" class="btn btn-primary">Export</a>
+<!--              
+             <a href="<?php echo base_url('absensi/export_absensi') ?>" class="btn btn-primary">Export</a> -->
+             <a href="<?php echo base_url('absensi/export_absensi') ?>" class="btn btn-success">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M18 22a2 2 0 0 0 2-2v-5l-5 4v-3H8v-2h7v-3l5 4V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12zM13 4l5 5h-5V4z"></path></svg>Export</a>
              <div class="card-body">
          <div class="row">
             <table class="table table-striped">

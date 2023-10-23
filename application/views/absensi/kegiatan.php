@@ -178,7 +178,7 @@ p {
             months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
             d      = date.getDate();
             day    = date.getDay();
-            days   = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+            days   = new Array('January', 'indonesia', 'March', 'April', 'May', 'Juni', 'jully');
             h      = date.getHours();
                    if(h<10)
                    {

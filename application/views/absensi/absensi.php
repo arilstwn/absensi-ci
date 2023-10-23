@@ -148,12 +148,7 @@ p {
                       <span class="flex-1 ml-3 whitespace-nowrap">Admin</span>
 </a> -->
 <!-- Karyawan -->
-<a href="<?php echo base_url('absensi/karyawan') ?>">
- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
-      <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
-           </svg>
-                 <span class="flex-1 ml-3 whitespace-nowrap">Karyawan</span>
-</a>
+
 <!-- Absensi -->
 <a href="<?php echo base_url('absensi/absensi') ?>">
 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg>
@@ -161,7 +156,7 @@ p {
                           <span class="flex-1 ml-3 whitespace-nowrap">History</span>
 </a>
 <!-- Izin -->
-<a href="<?php echo base_url('#') ?>">
+<a href="<?php echo base_url('absensi/izin') ?>">
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-align-bottom" viewBox="0 0 16 16">
       <rect width="4" height="12" x="6" y="1" rx="1"/>
            <path d="M1.5 14a.5.5 0 0 0 0 1v-1zm13 1a.5.5 0 0 0 0-1v1zm-13 0h13v-1h-13v1z"/>
@@ -170,13 +165,13 @@ p {
                      
 </a>
 <!-- Profil -->
-<a href="<?php echo base_url('absensi/profil') ?>">
+<!-- <a href="<?php echo base_url('absensi/profil') ?>">
    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                  </svg>
                       <span class="flex-1 ml-3 whitespace-nowrap">Edit Profil</span>
-</a>
+</a> -->
 <i class="bi-alarm" style="font-size: 2rem; color: cornflowerblue;"></i>
  <?php
 date_default_timezone_set("Asia/Bangkok");
@@ -191,7 +186,7 @@ date_default_timezone_set("Asia/Bangkok");
    months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
    d      = date.getDate();
    day    = date.getDay();
-   days   = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+   days   = new Array('January', 'indonesia', 'March', 'April', 'May', 'Juni', 'jully');
    h      = date.getHours();
           if(h<10)
           {
@@ -244,6 +239,20 @@ date_default_timezone_set("Asia/Bangkok");
      
    </a>
  
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
   
 <!-- Log Out -->
 <a href="<?php echo base_url('absensi/') ?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">

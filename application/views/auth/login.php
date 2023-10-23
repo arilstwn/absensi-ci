@@ -39,8 +39,8 @@ section{
 }
 .form-box{
     position: relative;
-    width: 400px;
-    height: 470px;
+    width: 340px;
+    height: 450px;
     background: transparent;
     border: 2px solid rgba(255,255,255,0.5);
     border-radius: 20px;
@@ -154,18 +154,12 @@ button{
                         <input name="email" type="email" required>
                         <label for="">Email</label>
                     </div>
-                    <div class="d-flex flex-row align-items-center mb-4">
 
                         <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
                             <input name="password" type="password" required>
-                            <i class="fa-solid fa-eye-slash toggle-password p-2"
-                            id="show-password"></i>
                             <label for="">Password</label>
                         </div>
-                     </div>
-
-                         <p class="forget">*Password harus memiliki 8 angka*</p> 
                         <br>
                      <div class="forget">
                         <label for=""><input type="checkbox">Remember Me  <a href="#">Forget Password</a></label>

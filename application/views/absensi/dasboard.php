@@ -58,11 +58,11 @@
 
 body {
     min-height: 100vh;
-    background-color: var(--primary-color);
+    background-color: var(--danger-color);
 }
 
 body.dark {
-    --primary-color: #3A3B3C;
+    --danger-color: #3A3B3C;
     --panel-color: #242526;
     --text-color: #CCC;
     --black-light-color: #CCC;
@@ -74,83 +74,7 @@ body.dark {
     --title-icon-color: #CCC;
 }
 
-/* === Custom Scroll Bar CSS === */
-::-webkit-scrollbar {
-    width: 8px;
-}
 
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #0b3cc1;
-}
-
-body.dark::-webkit-scrollbar-thumb:hover,
-body.dark .activity-data::-webkit-scrollbar-thumb:hover {
-    background: #3A3B3C;
-}
-
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 250px;
-    padding: 10px 14px;
-    background-color: var(--panel-color);
-    border-right: 1px solid var(--border-color);
-    transition: var(--tran-05);
-}
-
-nav.close {
-    width: 73px;
-}
-
-nav .logo-name {
-    display: flex;
-    align-items: center;
-}
-
-nav .logo-image {
-    display: flex;
-    justify-content: center;
-    min-width: 45px;
-}
-
-nav .logo-image img {
-    width: 40px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
-nav .logo-name .logo_name {
-    font-size: 22px;
-    font-weight: 600;
-    color: var(--text-color);
-    margin-left: 14px;
-    transition: var(--tran-05);
-}
-
-nav.close .logo_name {
-    opacity: 0;
-    pointer-events: none;
-}
-
-nav .menu-items {
-    margin-top: 40px;
-    height: calc(100% - 90px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
 
 .menu-items li {
     list-style: none;
@@ -273,38 +197,7 @@ nav.close~.dashboard {
     width: calc(100% - 73px);
 }
 
-.dashboard .top {
-    position: fixed;
-    top: 0;
-    left: 250px;
-    display: flex;
-    width: calc(100% - 250px);
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 14px;
-    background-color: var(--panel-color);
-    transition: var(--tran-05);
-    z-index: 10;
-}
 
-nav.close~.dashboard .top {
-    left: 73px;
-    width: calc(100% - 73px);
-}
-
-.dashboard .top .sidebar-toggle {
-    font-size: 26px;
-    color: var(--text-color);
-    cursor: pointer;
-}
-
-.dashboard .top .search-box {
-    position: relative;
-    height: 45px;
-    max-width: 600px;
-    width: 100%;
-    margin: 0 30px;
-}
 
 
 
@@ -323,288 +216,41 @@ nav.close~.dashboard .top {
     margin: 60px 0 30px 0;
 }
 
-.dash-content .title i {
-    position: relative;
-    height: 35px;
-    width: 35px;
-    background-color: var(--primary-color);
-    border-radius: 6px;
-    color: var(--title-icon-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-}
 
-.dash-content .title .text {
-    font-size: 24px;
-    font-weight: 500;
-    color: dark;
-    margin-left: 10px;
-}
 
-.dash-content .boxes {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
 
-.dash-content .boxes .box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 12px;
-    width: calc(100% / 3 - 15px);
-    padding: 15px 20px;
-    background-color: var(--box1-color);
-    transition: var(--tran-05);
-}
 
-.boxes .box i {
-    font-size: 35px;
-    color: var(--text-color);
-}
 
-.boxes .box .text {
-    white-space: nowrap;
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--text-color);
-}
 
-.boxes .box .number {
-    font-size: 40px;
-    font-weight: 500;
-    color: var(--text-color);
-}
 
-.boxes .box.box2 {
-    background-color: var(--box2-color);
-}
+   
+  
 
-.boxes .box.box3 {
-    background-color: var(--box3-color);
-}
+   
 
-.dash-content .activity .activity-data {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
 
-.activity .activity-data {
-    display: flex;
-}
 
-.activity-data .data {
-    display: flex;
-    flex-direction: column;
-    margin: 0 15px;
-}
 
-.activity-data .data-title {
-    font-size: 20px;
-    font-weight: 500;
-    color: var(--text-color);
-}
+ 
 
-.activity-data .data .data-list {
-    font-size: 18px;
-    font-weight: 400;
-    margin-top: 20px;
-    white-space: nowrap;
-    color: var(--text-color);
-}
+    
 
-@media (max-width: 1000px) {
-    nav {
-        width: 73px;
-    }
+   
 
-    nav.close {
-        width: 250px;
-    }
+    
+    
 
-    nav .logo_name {
-        opacity: 0;
-        pointer-events: none;
-    }
+    
 
-    nav.close .logo_name {
-        opacity: 1;
-        pointer-events: auto;
-    }
+  
+   
 
-    nav li a .link-name {
-        opacity: 0;
-        pointer-events: none;
-    }
+ 
 
-    nav.close li a .link-name {
-        opacity: 1;
-        pointer-events: auto;
-    }
 
-    nav~.dashboard {
-        left: 73px;
-        width: calc(100% - 73px);
-    }
-
-    nav.close~.dashboard {
-        left: 250px;
-        width: calc(100% - 250px);
-    }
-
-    nav~.dashboard .top {
-        left: 73px;
-        width: calc(100% - 73px);
-    }
-
-    nav.close~.dashboard .top {
-        left: 250px;
-        width: calc(100% - 250px);
-    }
-
-    .activity .activity-data {
-        overflow-X: scroll;
-    }
-}
-
-@media (max-width: 780px) {
-    .dash-content .boxes .box {
-        width: calc(100% / 2 - 15px);
-        margin-top: 15px;
-    }
-}
-
-@media (max-width: 560px) {
-    .dash-content .boxes .box {
-        width: 100%;
-    }
-}
-
-@media (max-width: 400px) {
-    nav {
-        width: 0px;
-    }
-
-    nav.close {
-        width: 73px;
-    }
-
-    nav .logo_name {
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    nav.close .logo_name {
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    nav li a .link-name {
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    nav.close li a .link-name {
-        opacity: 0;
-        pointer-events: none;
-    }
-
-    nav~.dashboard {
-        left: 0;
-
-        width: 100%;
-    }
-
-    nav.close~.dashboard {
-        left: 73px;
-        width: calc(100% - 73px);
-    }
-
-    nav~.dashboard .top {
-        left: 0;
-        width: 100%;
-    }
-
-    nav.close~.dashboard .top {
-        left: 0;
-        width: 100%;
-    }
-}
 </style>
 
 <body>
-    <nav>
-        <div class="logo-name">
-            <div class="logo-image">
-                <img src="https://tse1.mm.bing.net/th?id=OIP.xKEbKVRjeWNbWnFmFDiGxgHaHa&pid=Api&P=0&h=180" alt="">
-            </div>
-
-            <a>Karyawan</a>
-        </div>
-
-        <div class="menu-items">
-            <ul class="nav-links" style="padding-left:16px;">
-                <li><a href="<?php echo base_url('karyawan/dashboard') ?>">
-                        <i class="fa-solid fa-house"></i>
-                        <span class="link-name">Dashboard</span>
-                    </a></li>
-
-                <li><a href="<?php echo base_url('karyawan/history') ?>">
-                        <i class="fa-solid fa-clock-rotate-left"></i>
-
-                        <span class="link-name">History Absensi</span>
-                    </a></li>
-                <li><a href="<?php echo base_url('karyawan/absensi') ?>">
-                        <i class="fa-regular fa-calendar-days"></i>
-                        <span class="link-name">Absensi</span>
-                    </a></li>
-                <li><a href="<?php echo base_url('karyawan/izin') ?>">
-                        <i class="fa-solid fa-i"></i>
-                        <span class="link-name">Izin</span>
-                    </a></li>
-
-                <li><a href="<?php echo base_url('karyawan/akun') ?>">
-                        <i class="fa-solid fa-circle-user"></i>
-                        <span class="link-name">Edit Profil</span>
-                    </a></li>
-
-
-                <br>
-                <li class="mode">
-
-                    <div class="mode-toggle">
-                        <span class="switch"></span>
-                    </div>
-                </li>
-
-                <li class="logout-mode  ">
-                <li><a class="btn btn-lg   " onclick=" logout(id)">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <span class="link-name">Keluar</span>
-                    </a>
-
-                </li>
-                <li>
-
-                    <span id="clock" name="date" class="text-white link-name"> </span>
-
-                </li>
-                <li>
-                    <span id="clock2" name="date2" class="text-dark link-name"> </span>
-                </li>
-
-
-
-
-        </div>
-
-
-    </nav>
 
     <section class="dashboard">
         <div class="top">
@@ -641,7 +287,7 @@ foreach ($user as $row) : $no++; ?>
                                                 width="150" class="rounded-circle">
 
                                             <?php else: ?>
-                                            <img class="rounded-circle  " height="150" width="150"
+                                            <img class="rounded-circle " height="150" width="150"
                                                 src="https://slabsoft.com/wp-content/uploads/2022/05/pp-wa-kosong-default.jpg" />
                                             <?php endif;?>
                                         </span>
@@ -725,11 +371,12 @@ foreach ($user as $row) : $no++; ?>
                                     enctype="multipart/form-data" method="post">
                                     <div class="overview shadow-lg p-1 mb-3 bg-body rounded">
                                         <div class="d-flex form-outline flex-fill mb-0  ">
-                                            <input type="password" name="password_baru" id="password1"
-                                                class="form-control relaltive" placeholder="Password Baru">
+                                            <input type="password" name="password_lama" id="password1"
+                                                class="form-control relaltive" placeholder="Password Lama">
 
-                                            <i id="showPassword1" onclick="togglePasswordVisibility('password1')"
-                                                class="far fa-eye absolute p-2"></i>
+                                            <button type="button" id="showPassword1"
+                                                onclick="togglePasswordVisibility('password1')"
+                                                class="far fa-eye-slash absolute p-2"></button>
 
 
 
@@ -737,12 +384,32 @@ foreach ($user as $row) : $no++; ?>
 
                                             <input type="password" name="konfirmasi_password" id="password2"
                                                 class="form-control relative" placeholder="Konfirmasi Password">
-                                            <i id="showPassword2" onclick="togglePasswordVisibility('password2')"
-                                                class="far fa-eye absolute p-2"></i>
+                                            <button type="button" id="showPassword2"
+                                                onclick="togglePasswordVisibility('password2')"
+                                                class="far fa-eye-slash absolute p-2"></button>
+
+
+
+                                        </div><br>
+                                        <div class="d-flex form-outline flex-fill col-6  ">
+                                            <input type="password" name="password_baru" id="password3"
+                                                class="form-control relaltive" placeholder="Password Baru">
+
+                                            <button type="button" id="showPassword3"
+                                                onclick="togglePasswordVisibility('password3')"
+                                                class="far fa-eye-slash absolute p-2"></button>
+
+
+
+
+
+
 
 
 
                                         </div>
+
+                                        <p>*Password harus memiliki 8 angka</p>
                                     </div>
 
 
@@ -770,11 +437,15 @@ foreach ($user as $row) : $no++; ?>
     // show password
 
     function togglePasswordVisibility(inputId) {
-        const passwordInput = document.getElementById(inputId);
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
+        var passwordInput = document.getElementById(inputId);
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            togglePassword.classList.remove('fa-eye-slash');
+            togglePassword.classList.add('fa-eye');
         } else {
-            passwordInput.type = "password";
+            passwordInput.type = 'password';
+            togglePassword.classList.remove('fa-eye');
+            togglePassword.classList.add('fa-eye-slash');
         }
     }
     // jam
