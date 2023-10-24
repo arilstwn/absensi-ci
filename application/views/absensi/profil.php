@@ -294,51 +294,8 @@ date_default_timezone_set("Asia/Bangkok");
                         src="https://i.pinimg.com/originals/ca/df/24/cadf2484ff610b5bfbd3debcdb9debaf.jpg" />
                     <?php endif;?>
                 </button>
-               
-                <form method="post" action="<?php echo base_url('absensi/edit_foto') ?>" enctype="multipart/form_data">
-           
-                    <div class="d-flex flex-row ">  
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Foto Profile</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="container w-75 m p-3">
-                                    <form method="post" action="<?php echo base_url('admin/upload_image'); ?>"
-                                        enctype="multipart/form-data" class="row">
-                                        <div class="mb-3 col-12">
-                                            <label for="nama" class="form-label">Foto:</label>
-                                            <input type="hidden" class="form-control" id="id" name="id"
-                                                value="<?php echo $this->session->userdata('id'); ?>">
-                                            <input type="hidden" name="base64_image" id="base64_image">
-                                            <input class="form-control" type="file" name="userfile" id="userfile"
-                                                accept="image/*">
-                                        </div>
-                                        <div class="col-12 text-end">
-                                            <input type="submit" class="btn btn-sm btn-primary px-3" name="submit"
-                                                value="Ubah Foto"></input>
-                                        </div>
-                                      
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                         
-                        </div>
-                        </div>
-                        
-                    </form>
-                    
-                </center>
                 
-             
-                
-                
-                <!-- <div class="flex justify-content-center"> -->
+                  <!-- <div class="flex justify-content-center"> -->
                     
                     <!-- </div> -->
                     <h5 class="card-title">
@@ -351,8 +308,41 @@ date_default_timezone_set("Asia/Bangkok");
                     <p class="card-text">***********</p>
                     <!-- Tampilkan tanda bintang atau karakter lain sebagai ganti password -->
                     <!-- Tambahkan tombol "Ubah" pada halaman profil -->
-                    
+                     
+                    <?php
+                 $no= 0;foreach ($user as $row) :$no++                          
+                    ?>
+                <form method="post" action="<?php echo base_url('absensi/aksi_profil') ?>" enctype="multipart/form_data">
+           
+                    <div class="d-flex flex-row ">  
+                   
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Foto Profile</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="container w-75 m p-3">
+                                        <div class="mb-3 col-12">
+                                            <label for="nama" class="form-label">Foto:</label>
+                                            <input type="hidden" class="form-control" id="id" name="id"
+                                                value="<?php echo $this->session->userdata('id'); ?>">
+                                            <input type="hidden" name="base64_image" id="base64_image">
+                                            <input class="form-control" type="file" name="userfile" id="userfile"
+                                                accept="image/*">
+                                        </div>
+                                        <!-- <div class="col-12 text-end">
+                                            <input type="submit" class="btn btn-sm btn-primary px-3" name="submit"
+                                                value="Ubah Foto"></input>
+                                        </div> -->
+                                      
+                    </div>
+                    </div>
+
+                       
+                
              
+                
+               
                 </div>
                 
             </div>
@@ -397,15 +387,19 @@ date_default_timezone_set("Asia/Bangkok");
                                 </div> -->
                                 <button type="submit" class="btn btn-primary">Ubah</button>
                                 <a href="<?php echo base_url('absensi/profil') ?>" class="btn btn-danger">Kembali</a>
-                            </form>
+                            </div>
                         </div>
                     </div>
-            </div>
-        </div>
-
+                </div>
+            </form>
+            <?php endforeach;  ?> 
+ 
+             
+                    
+             
         </section>
         <br>
-        <br>
+        
         <div class="overview shadow-lg p-1 mb-3 bg-body rounded">
 
 
@@ -417,9 +411,7 @@ date_default_timezone_set("Asia/Bangkok");
     <div class="row">
         <div class="col">
             <div class="overflow-auto" style="white-space: nowrap;">
-
-                <form action="<?php echo base_url('absensi/ubah_password'); ?>"
-                    enctype="multipart/form-data" method="post">
+            <form action="<?= base_url('absensi/aksi_ubah_password'); ?>" method="post">
                     <div class="overview shadow-lg p-1 mb-3 bg-body rounded">
                         <div class="d-flex form-outline flex-fill mb-0  ">
                             <input type="password" name="password_lama" id="password1"

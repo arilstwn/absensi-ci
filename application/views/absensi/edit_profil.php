@@ -362,6 +362,7 @@
                                     <input type="password" class="form-control" id="konfirmasi_password"
                                         name="konfirmasi_password" placeholder="Konfirmasi Password Baru">
                                 </div>
+                              
                                 <button type="submit" class="btn btn-primary">Ubah</button>
                                 <a href="<?php echo base_url('absensi/profil') ?>" class="btn btn-danger">Kembali</a>
                             </form>

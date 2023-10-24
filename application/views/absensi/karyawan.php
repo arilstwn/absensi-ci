@@ -405,17 +405,19 @@ if (isset($_POST['submit'])) {
         </div>
       </nav>
       <h1><b></b></h1>
-      <!-- <center><?php echo anchor('admin/tambah_siswa', 'TAMBAH DATA'); ?></center> -->
+    
       <table class="table table-secondary table-bordered border-primary">
         
         <thead>
           <tr>
             <th><b>No.</b></th>
             <th><b>Nama</b></th>
+           
             <th><b>Email</b></th>
             <th><b>Nama Depan</b></th>
             <th><b>Nama Belakang</b></th>
             <th><b>status</b></th>
+          
           
           </tr>
         </thead>
@@ -424,6 +426,7 @@ if (isset($_POST['submit'])) {
           foreach ($karyawan as $u) { ?>
             <td class="text-center"><b><?php echo $no++ ?></b></td>
                         <td class="text-center"><b><?php echo $u->username ?></b></td>
+                        
                         <td class="text-center"><b><?php echo $u->email ?></b></td>
                         <td class="text-center"><b><?php echo $u->nama_depan ?></b></td>
                         <td class="text-center"><b><?php echo $u->nama_belakang ?></b></td>
