@@ -276,24 +276,40 @@ date_default_timezone_set("Asia/Bangkok");
                                             </div>
              
                                             <div class="overview shadow-lg p-1 mb-3 bg-body rounded">
-                <section class="card-body text-center">
-                    <div class="home-content">
-                    </div>
-                    <div class="card">
-                        <div class="card-body text-center">
-                        <div><?php $this->session->flashdata('message') ?></div>
-                        <?php $this->session->flashdata('message') ?></div>
-              <div class="row d-flex">
-                  <div class="row d-flex">
-                  <center>
-                   <button class="border border-0 btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <?php if (!empty($row->images)): ?>
-                    <img class="rounded-circle" height="150" width="150" src="<?php echo $row->foto;?>">
-                    <?php else: ?>
-                    <img class="rounded-circle" height="150" width="150"
-                        src="https://i.pinimg.com/originals/ca/df/24/cadf2484ff610b5bfbd3debcdb9debaf.jpg" />
-                    <?php endif;?>
-                </button>
+                                                <section class="card-body text-center">
+                                                    <div class="home-content">
+                                                        </div>
+                                                        <?php
+                 $no= 0;foreach ($karyawan as $row  ) :$no++                          
+                    ?>
+                                                        <div class="card">
+                                                            <div class="card-body text-center">
+                                                                <div><?php $this->session->flashdata('message') ?></div>
+                                                                <?php $this->session->flashdata('message') ?></div>
+                                                                <div class="row d-flex">
+                                                                    <div class="row d-flex">
+                                                                        <center>
+                                                                            <!-- <button class="border border-0 btn btn-link" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                                                <?php if (!empty($row->images)): ?>
+                                                                                    <img class="rounded-circle" height="150" width="150" src="<?php echo $row->foto;?>">
+                                                                                    <?php else: ?>
+                                                                                        <img class="rounded-circle" height="150" width="150"
+                                                                                        src="https://i.pinimg.com/originals/ca/df/24/cadf2484ff610b5bfbd3debcdb9debaf.jpg" />
+                                                                                        <?php endif;?>
+                                                                                    </button> -->
+                                                                                    <form action="<?= base_url('absensi/aksi_profil'); ?>" method="post">
+
+                <span class="border border-0 btn btn-link">
+                                            <?php if (!empty($row->foto)): ?>
+                                            <img src="<?php echo  base_url('./foto/' . $row->foto) ?>" height="150"
+                                                width="150" class="rounded-circle">
+
+                                            <?php else: ?>
+                                            <img class="rounded-circle " height="150" width="150"
+                                                src="https://i.pinimg.com/originals/85/9c/8e/859c8ee13e667ceac51484215f72f773.jpg" />
+
+                                            <?php endif;?>
+                                        </span>
                 
                   <!-- <div class="flex justify-content-center"> -->
                     
@@ -305,44 +321,25 @@ date_default_timezone_set("Asia/Bangkok");
                     <p class="card-text">
                         <?php echo $this->session->userdata('email'); ?>
                     </p>
+                    <p class="card-text">
+                        <?php echo $this->session->userdata('nama_depan'); ?>
+                    </p>
+                    <p class="card-text">
+                        <?php echo $this->session->userdata('nama_belakang'); ?>
+                    </p>
                     <p class="card-text">***********</p>
                     <!-- Tampilkan tanda bintang atau karakter lain sebagai ganti password -->
                     <!-- Tambahkan tombol "Ubah" pada halaman profil -->
-                     
-                    <?php
-                 $no= 0;foreach ($user as $row) :$no++                          
-                    ?>
+                   
+                  
                 <form method="post" action="<?php echo base_url('absensi/aksi_profil') ?>" enctype="multipart/form_data">
            
-                    <div class="d-flex flex-row ">  
-                   
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Foto Profile</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="container w-75 m p-3">
-                                        <div class="mb-3 col-12">
-                                            <label for="nama" class="form-label">Foto:</label>
-                                            <input type="hidden" class="form-control" id="id" name="id"
-                                                value="<?php echo $this->session->userdata('id'); ?>">
-                                            <input type="hidden" name="base64_image" id="base64_image">
-                                            <input class="form-control" type="file" name="userfile" id="userfile"
-                                                accept="image/*">
-                                        </div>
-                                        <!-- <div class="col-12 text-end">
-                                            <input type="submit" class="btn btn-sm btn-primary px-3" name="submit"
-                                                value="Ubah Foto"></input>
-                                        </div> -->
-                                      
-                    </div>
-                    </div>
-
-                       
                 
-             
                 
-               
+                
+                
+                
+                
                 </div>
                 
             </div>
@@ -353,26 +350,45 @@ date_default_timezone_set("Asia/Bangkok");
                     </div>
                     <div class="card">
                         <div class="card-body text-center">
-                            <form action="<?= base_url('absensi/aksi_profil'); ?>" method="post">
+                            
                                 <div class="mb-8">
                                     <label for="username" class="form-label">Username</label>
                                     <input type="text" class="form-control" id="username" name="username"
-                                        placeholder="Username Anda">
+                                    placeholder="Username Anda">
                                 </div>
                                 <div class="mb-8">
                                     <label for="nama_depan" class="form-label">Nama Depan</label>
                                     <input type="text" class="form-control" id="nama_depan" name="nama_depan"
-                                        placeholder="Nama Depan Anda">
+                                    placeholder="Nama Depan Anda">
                                 </div>
                                 <div class="mb-8">
                                     <label for="nama_belakang" class="form-label">Nama Belakang</label>
                                     <input type="text" class="form-control" id="nama_belakang" name="nama_belakang"
-                                        placeholder="Nama Belakang Anda">
+                                    placeholder="Nama Belakang Anda">
                                 </div>
                                 <div class="mb-8">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="email@anda.com">
+                                    placeholder="email@anda.com">
+                                </div>
+                                
+                                <div class="mb-8 ">  
+                               
+                                            <div class="container w-75 m p-3">
+                                                    <div class="mb-9 col-12">
+                                                    
+                                                        <input type="hidden" class="form-control" id="id" name="id"
+                                                            value="<?php echo $this->session->userdata('id'); ?>">
+                                                        <input type="hidden" name="base64_image" id="base64_image">
+                                                        <input class="form-control" type="file" name="userfile" id="userfile"
+                                                            accept="image/*">
+                                                    </div>
+                                                    <!-- <div class="col-12 text-end">
+                                                        <input type="submit" class="btn btn-sm btn-primary px-3" name="submit"
+                                                            value="Ubah Foto"></input>
+                                                    </div> -->
+                                                  
+                                </div>
                                 </div>
                                 <!-- <div class="mb-3">
                                     <label for="password_baru" class="form-label">Password Baru</label>
@@ -390,9 +406,10 @@ date_default_timezone_set("Asia/Bangkok");
                             </div>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
             </form>
-            <?php endforeach;  ?> 
+         
  
              
                     

@@ -36,7 +36,73 @@ class Admin extends CI_Controller {
         }
     }
 
+    public function aksi_profil()
+    {
+        $images = $this->upload_img('image');
+        if ($images [0] == false) {
+            $password_baru = $this->input->post('password_baru');
+            $konfirmasi_password = $this->input->post('konfirmasi_password');
+            $email = $this->input->post('email');
+            $username = $this->input->post('username');
+            $nama_depan = $this->input->post('nama_depan');
+            $nama_belakang = $this->input->post('nama_belakang');
+            $data = [
+              'image' => 'User.png', // Ganti 'foto' menjadi 'image'
+              'email' => $email,
+                'username' => $username,
+                'nama_depan' => $nama_depan,
+                'nama_belakang' => $nama_belakang,
+            ];
 
+            
+            if (!empty($password_baru)) {
+                if ($password_baru === $konfirmasi_password) {
+                    $data['password'] = md5($password_baru);
+                } else {
+                    $this->session->set_flashdata('message', 'Password baru dan Konfirmasi password harus sama');
+                    redirect(base_url('admin/akun'));
+                }
+            }
+            $this->session->set_userdata($data);
+            $update_result = $this->m_model->ubah_data('admin', $data, ['id' => $this->session->userdata('id')]);
+            
+            if ($update_result) {
+                redirect(base_url('admin/akun'));
+            } else {
+                redirect(base_url('admin/akun'));
+            }
+        } else {
+            $password_baru = $this->input->post('password_baru');
+            $konfirmasi_password = $this->input->post('konfirmasi_password');
+            $email = $this->input->post('email');
+            $username = $this->input->post('username');
+            $nama_depan = $this->input->post('nama_depan');
+            $nama_belakang = $this->input->post('nama_belakang');
+            $data = [
+                'image' => $image[1],
+                'email' => $email,
+                'username' => $username,
+                'nama_depan' => $nama_depan,
+                'nama_belakang' => $nama_belakang,
+            ];
+            if (!empty($password_baru)) {
+                if ($password_baru === konfirmasi_password) {
+                    $data['password'] = md5($password_baru);
+                } else {
+                    $this->session->set_flashdata('message', 'Password baru dan Konfirmasi password harus sama');
+                    redirect(base_url('admin/akun'));
+                }
+            }
+            $this->session->set_userdata($data);
+            $update_result = $this->m_model->update('admin', $data, ['id' => $this->session->userdata('id')]);
+
+            if ($update_result) {
+                redirect(base_url('admin/akun'));
+              } else {
+                redirect(base_url('admin/akun'));
+            }
+          }
+    }
 
 
 
@@ -855,7 +921,13 @@ public function akun()
 
 
 
-
+public function dasboard()
+{
+    $data['rekap_h'] = $this->m_model->get_data('rekap_h')->num_rows();
+    $data['rekap_m'] = $this->m_model->get_data('rekap_m')->num_rows();
+    $data['rekap_b'] = $this->m_model->get_data('rekap_b')->num_rows();
+    $this->load->view('admin/dasboard');
+}
 
 
 

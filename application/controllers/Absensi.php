@@ -622,7 +622,7 @@ public function rekap_b()
             $nama_depan = $this->input->post('nama_depan');
             $nama_belakang = $this->input->post('nama_belakang');
             $data = [
-              'image' => 'User.png', // Ganti 'foto' menjadi 'image'
+              'foto' => 'User.png', // Ganti 'foto' menjadi 'image'
               'email' => $email,
                 'username' => $username,
                 'nama_depan' => $nama_depan,
@@ -654,7 +654,7 @@ public function rekap_b()
             $nama_depan = $this->input->post('nama_depan');
             $nama_belakang = $this->input->post('nama_belakang');
             $data = [
-                'image' => $image[1],
+                'foto' => $image[1],
                 'email' => $email,
                 'username' => $username,
                 'nama_depan' => $nama_depan,
@@ -678,13 +678,21 @@ public function rekap_b()
             }
           }
     }
-    // public function aksi_profil()
+
+
+
+
+    
+
+
+
+
+
+    // public function upload_foto()
     // {
-    //     $foto = $_FILES['foto']['name'];
+    //     $file = $_FILES['foto']['name'];
     //     $foto_temp = $_FILES['foto']['tmp_name'];
-    //     $username = $this->input->post('username');
-    //     $nama_depan = $this->input->post('nama_depan');
-    //     $nama_belakang = $this->input->post('nama_belakang');
+    
     //     // $foto = $this->upload_img('foto');
     //     // Jika ada foto yang diunggah
     //     if ($foto) {
@@ -701,9 +709,7 @@ public function rekap_b()
 
     //             $data = [
     //                 'foto' => $file_name,
-    //                 'username' => $username,
-    //                 'nama_depan' => $nama_depan,
-    //                 'nama_belakang' => $nama_belakang,
+                   
     //             ];
     //         } else {
     //             // Gagal mengunggah foto baru
@@ -712,9 +718,7 @@ public function rekap_b()
     //     } else {
     //         // Jika tidak ada foto yang diunggah
     //         $data = [
-    //             'username' => $username,
-    //             'nama_depan' => $nama_depan,
-    //             'nama_belakang' => $nama_belakang,
+    //           'foto' => $foto[1],
     //         ];
     //     }
 
@@ -735,14 +739,34 @@ public function rekap_b()
 
     public function profil()
     {         
-        $data['user'] = $this->m_model->get_by_id('admin', 'id', $this->session->userdata('id'))->result();
+        $data['karyawan'] = $this->m_model->get_by_id('karyawan', 'id', $this->session->userdata('id'))->result();
 
 
         $this->load->view('absensi/profil',$data);
 
     }
 
-
+    public function upload_image()
+    {
+      $foto = $this->upload_img('image');
+      if ($foto[0] == false) {
+        $data = [
+          'foto' => 'User.png',
+         
+         
+        ];
+        $this->m_model->tambah_data('admin', $data);
+        redirect(base_url('absensi/profil'));
+      } else {
+        $data = [
+          'foto' => $foto[1],
+         
+         
+        ];
+        $this->m_model->tambah_data('admin', $data);
+        redirect(base_url('absensi/profil'));
+      }
+    }
     
 
     // public function aksi_update_profil ()
@@ -810,25 +834,7 @@ public function rekap_b()
     // }
 
    
-    public function edit_foto()
-    {
-      $image = $this->upload_img('image');
-      if ($image[0] == false) {
-        $data = [
-          'images' => 'User.png',
-      
-        ];
-        $this->m_model->tambah_data('admin', $data);
-        redirect(base_url('absensi/profil'));
-      } else {
-        $data = [
-          'images' => $image[1],
-         
-        ];
-        $this->m_model->tambah_data('admin', $data);
-        redirect(base_url('absensi/profil'));
-      }
-    }
+   
 
    
 
