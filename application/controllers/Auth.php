@@ -83,8 +83,8 @@ class Auth extends CI_Controller {
             $this->session->set_userdata($data);
             if ($this->session->userdata('role') == 'admin') {
                 redirect(base_url('admin'));
-            }elseif ($this->session->userdata('role') == 'karyawan') {
-            redirect(base_url('absensi/index'))  ;
+            }else if ($this->session->userdata('role') == 'karyawan') {
+            redirect(base_url('karyawan'))  ;
             } else {
                 redirect(base_url('auth/login'));
             }
@@ -186,7 +186,10 @@ public function aksi_login_karyawan()
     }
 }
  
-
+function logout_akun() {
+    $this->session->sess_destroy();
+    redirect(base_url('auth/login'));
+  }
 
 
 

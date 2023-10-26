@@ -923,10 +923,17 @@ public function akun()
 
 public function dasboard()
 {
-    $data['rekap_h'] = $this->m_model->get_data('rekap_h')->num_rows();
-    $data['rekap_m'] = $this->m_model->get_data('rekap_m')->num_rows();
-    $data['rekap_b'] = $this->m_model->get_data('rekap_b')->num_rows();
-    $this->load->view('admin/dasboard');
+    $data['admin'] = $this->m_model->get_data('admin')->num_rows();
+    
+    $data['absensi'] = $this->m_model->get_data('absensi')->num_rows();
+    $data['data'] = $this->m_model->get_data('absensi')->num_rows();
+    $data['karyawan'] = $this->m_model->get_data('karyawan')->num_rows();
+   
+    
+    $data['data'] = $this->m_model->get_data('absensi')->result();
+    
+  
+    $this->load->view('admin/dasboard', $data);
 }
 
 

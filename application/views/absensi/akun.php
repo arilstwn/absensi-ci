@@ -437,13 +437,13 @@ date_default_timezone_set("Asia/Bangkok");
   <br>
   <br>
   
-
-<a href="<?php echo base_url('auth/login') ?>" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+  <a class="btn btn-lg   " onclick=" logout(id)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
        <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
            </svg>
-                <span class="flex-1 ml-3 whitespace-nowrap">Log out</span>
+                         <span class="link-name">Log Out</span>
+                     </a>
 
 </a>
 
@@ -475,51 +475,44 @@ date_default_timezone_set("Asia/Bangkok");
                     <div class="row">
                         <div class="col">
                             <div class="overflow-auto" style="white-space: nowrap;">
-                                
+
                                 <div class="w-100 m-auto p-3">
                                     <br>
                                     <div><?php echo $this->session->flashdata('message'); ?></div>
                                     <div><?php echo $this->session->flashdata('sukses'); ?></div>
                                     <div class="row d-flex">
-                                       
-                                       
-                                        <input name="id" type="hidden"
-                                        >
+                                        <input name="id" type="hidden" value="<?php $this->session->userdata('id') ?>">
 
 
                                         <span class="border border-0 btn btn-link">
-                                            <?php if (!empty($key->images)): ?>
-                                            <img src="<?php echo  base_url('./image/' . $key->images) ?>" height="150"
+                                            <?php if (!empty($waifu->foto)): ?>
+                                            <img src="<?php echo $waifu->foto ?>" height="150"
                                                 width="150" class="rounded-circle">
 
-                                              
                                             <?php else: ?>
                                             <img class="rounded-circle " height="150" width="150"
-                                                src="https://64.media.tumblr.com/9c82dc5279bd162048e713de9853689e/16d8f6f504f58a2c-b9/s500x750/19d4e39d61d677854d5f810d6605e4e75614cfa3.gifv" />
+                                                src="https://i.pinimg.com/564x/97/a3/f7/97a3f79a2c326fe7414599681fc30c8d.jpg" />
                                             <?php endif;?>
                                         </span>
-                                        
-                                        
+
                                         <br>
                                         <br>
                                         <form method="post"
-                                            action="<?php echo base_url('absensi/aksi_update_profile'); ?>"
+                                            action="<?php echo base_url('absensi/aksi_update_profil'); ?>"
                                             enctype="multipart/form-data">
-                                            <input name="id" type="hidden">
+                                            <input name="id" type="hidden" value="<?php echo $this->session->userdata('id')?>">
                                             <div class="d-flex flex-row ">
                                                 <div class="p-2 col-6">
                                                     <label for="" class="form-label fs-5">Nama
                                                         <br>
                                                         Depan </label>
                                                     <input type="text" class="form-control" id="nama_depan"
-                                                    name="nama_depan" placeholder="Nama Depan"
-                                                       >
-
+                                                        name="nama_depan" placeholder="Nama Depan"
+                                                        value="<?php echo $this->session->userdata('nama_depan')?>">
                                                     <label for="" class="form-label fs-5">Username </label>
                                                     <input type="text" class="form-control" id="username"
                                                         name="username" placeholder="Username"
-                                                        >
-
+                                                        value="<?php echo $this->session->userdata('username')?>">
                                                 </div>
                                                 <br>
                                                 <div class="p-2 col-6">
@@ -528,33 +521,35 @@ date_default_timezone_set("Asia/Bangkok");
                                                         Belakang </label>
                                                     <input type="text" class="form-control" id="nama_belakang"
                                                         name="nama_belakang" placeholder="Nama Belakang"
-                                                       >
+                                                        value="<?php echo $this->session->userdata('nama_belakang')?>">
 
 
 
-                                                    </div>
-                                                  
+                                                </div>
                                             </div>
                                             <input type="file" name="foto" class="p-3">
                                     </div>
                                 </div>
-                              
+                                
+
+
 
                                 <div class="d-flex p-2 row justify-content-evenly ">
                                     <button type="submit" class="btn btn-sm btn-dark col-5" name=" submit">Ubah
                                         Profile</button>
 
                                     <a class="btn btn-danger col-5"
-                                        href="<?php echo base_url('karawan/hapus_image'); ?>">
+                                        href="<?php echo base_url('absensi/hapus_image'); ?>">
                                         Hapus
                                         Foto</a>
-                                    </div>
+                                </div>
 
                                 <br>
 
-                            </form>
-                            
-                            
+                                </form>
+
+
+
 
 
 
@@ -562,7 +557,7 @@ date_default_timezone_set("Asia/Bangkok");
                         </div>
                     </div>
                 </div>
-            </div>              </div>
+            </div>
             <div class="overview shadow-lg p-1 mb-3 bg-body rounded">
 
 
@@ -641,8 +636,7 @@ date_default_timezone_set("Asia/Bangkok");
             </div>
     </section>
 
-    <script>
-             
+
             
         <a href="<?php echo base_url('absensi/edit_profil') ?>" class="btn btn-danger">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m18.988 2.012 3 3L19.701 7.3l-3-3zM8 16h3l7.287-7.287-3-3L8 13z"></path><path d="M19 19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .896-2 2v14c0 1.104.897 2 2 2h14a2 2 0 0 0 2-2v-8.668l-2 2V19z"></path></svg> Ubah Profile</a>
@@ -699,6 +693,35 @@ date_default_timezone_set("Asia/Bangkok");
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
         </script>
+
         
 </body>
+ 
+<script>
+function logout(id) {
+    swal.fire({
+        title: ' Yakin Ingin Log Out',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Batal',
+        confirmButtonText: 'Log Out'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Log Out',
+                showConfirmButton: false,
+                timer: 1500,
+
+            }).then(function() {
+                window.location.href = "<?php echo base_url('auth/logout_akun/')?>" + id;
+            });
+        }
+    });
+}
+</script>
+
 </html>

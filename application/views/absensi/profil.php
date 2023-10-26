@@ -275,13 +275,11 @@ date_default_timezone_set("Asia/Bangkok");
                     </div>
                                             </div>
              
-                                            <div class="overview shadow-lg p-1 mb-3 bg-body rounded">
+                                            <div class="overview  p-8 mb-3 ">
                                                 <section class="card-body text-center">
                                                     <div class="home-content">
                                                         </div>
-                                                        <?php
-                 $no= 0;foreach ($karyawan as $row  ) :$no++                          
-                    ?>
+                                                      
                                                         <div class="card">
                                                             <div class="card-body text-center">
                                                                 <div><?php $this->session->flashdata('message') ?></div>
@@ -314,6 +312,8 @@ date_default_timezone_set("Asia/Bangkok");
                   <!-- <div class="flex justify-content-center"> -->
                     
                     <!-- </div> -->
+                    
+             
                     <h5 class="card-title">
                         <?php echo $this->session->userdata('username'); ?>
                     </h5>
@@ -406,7 +406,7 @@ date_default_timezone_set("Asia/Bangkok");
                             </div>
                         </div>
                     </div>
-                    <?php endforeach; ?>
+                  
                 </div>
             </form>
          
@@ -417,19 +417,20 @@ date_default_timezone_set("Asia/Bangkok");
         </section>
         <br>
         
-        <div class="overview shadow-lg p-1 mb-3 bg-body rounded">
+        <div class="overview  p-1 mb-3 bg rounded">
 
 
 <div class="title ">
     <span class="text ">Password</span>
 
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col">
-            <div class="overflow-auto" style="white-space: nowrap;">
+<div class="overview  p-8 mb-3 ">
+<div class="card-body text-center">
+<div class="home-content">
+<div class="card">
+<div class=" text-center">
             <form action="<?= base_url('absensi/aksi_ubah_password'); ?>" method="post">
-                    <div class="overview shadow-lg p-1 mb-3 bg-body rounded">
+            <div class=" p-8 mb-3 ">
                         <div class="d-flex form-outline flex-fill mb-0  ">
                             <input type="password" name="password_lama" id="password1"
                                 class="form-control relaltive" placeholder="Password Lama">

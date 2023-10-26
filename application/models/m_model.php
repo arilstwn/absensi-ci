@@ -233,6 +233,21 @@ return $query->result_array();
 //     }
 // }
 
+public function get_akun_by_id($id)
+{
+    $this->db->select('foto');
+    $this->db->from('admin');
+    $this->db->where('id', $id);
+    $query = $this->db->get();
+
+    if ($query->num_rows() > 0) {
+        $result = $query->row();
+        return $result->f;
+    } else {
+        return false;
+    }
+}
+
 public function get_foto_by_id($id)
 {
     $this->db->select('foto');

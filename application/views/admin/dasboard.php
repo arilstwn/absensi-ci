@@ -328,7 +328,7 @@ if (isset($_POST['submit'])) {
      
       <div id="content" role="main">
         <header class="flex justify-between items-center p-4 bg-white border-b-2 border-gray-200">
-          <h1 class="text-4xl">DASHBOARD  
+          <h1 class="text-4xl">DASHBOARD ADMIN
          </h1>
           
          
@@ -362,7 +362,7 @@ if (isset($_POST['submit'])) {
                                             <div class="ml-auto"></div>
                                         <br>
                                         <span style="font-size: 24px;">
-                                            <b><?php echo $rekap_h ?></b>
+                                            <b><?php echo $absensi ?></b>
                                         </span>
                                     </div>
                                     <hr>
@@ -371,7 +371,7 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="col-md-4 mb-3">
                                 <div class="card shadow bg-D8D9DA text-black shadow border-10 rounded">
-                                    <h3><b>Data absensi</b></h3>
+                                    <h3><b>Data Izin</b></h3>
                                     <hr>
                                     <div class="card-body d-flex align-items-center justify-content-between">
                                         <div>
@@ -379,38 +379,72 @@ if (isset($_POST['submit'])) {
                                         </div>
                                         <div class="ml-auto"></div>
                                         <span style="font-size: 24px;">
-                                            <b><?php echo $rekap_b?></b>
+                                            <b><?php echo $karyawan?></b>
                                         </span>
                                     </div>
                                     <hr>
                                     <a href="<?php echo base_url('absensi/history') ?>">Lihat Detail</a><br>
                                     </div>
                                 </div>
-                                <div class="col-md-4 mb-3">
-                                  <div class="card shadow bg-D8D9DA text-black shadow border-10 rounded">
-                                    
-                                    <h3><b>Data keseluruhan</b></h3>
-                                    <hr>
-                                    <div class="card-body d-flex align-items-center justify-content-between">
-                                      <div>
-                                        
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 2H6c-1.206 0-3 .799-3 3v14c0 2.201 1.794 3 3 3h15v-2H6.012C5.55 19.988 5 19.806 5 19c0-.101.009-.191.024-.273.112-.576.584-.717.988-.727H21V4a2 2 0 0 0-2-2zm0 9-2-1-2 1V4h4v7z"></path></svg>
-                                      </div>
-                                      <div class="ml-auto"></div>
-                                      <span style="font-size: 24px;">
-                                        <b><?php echo $rekap_m?></b>  
-                                      </span>
-                                    </div>
-                                    <hr>
-                                    <a href="<?php echo base_url('absensi/history') ?>">Lihat Detail</a><br>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>                                   
+                                                            
                               
                                                     </center>
 
+                                             
+   <br>
+   <br>
 
+                   
+             <!-- Tbel Kryawan -->
+           
+           
+             <div class="card-body">
+         <div class="row">
+            <table class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th class="text-center"><b>No</b></th>
+                        <th class="text-center"><b>Id Karyawan</b></th>
+                        <th class="text-center"><b>Kegiatan</b></th>
+                        <th class="text-center"><b>Date</b></th>
+                        <th class="text-center"><b>Jam Msuk</b></th>
+                        <th class="text-center"><b>Jam Keluar</b></th>
+                        <th class="text-center"><b>Keterangan Izin</b></th>
+                        <th class="text-center"><b>Status</b></th>
+                      
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $no = 0; foreach ($data as $u) : ?>
+                    <tr>
+                        
+                        <td class="text-center"><b><?php echo $no++ ?></b></td>
+                        <td class="text-center"><b><?php echo $u->id_karyawan ?></b></td>
+                        <td class="text-center"><b><?php echo $u->kegiatan ?></b></td>
+                        <td class="text-center"><b><?php echo $u->date ?></b></td>
+                        <td class="text-center"><b><?php echo $u->jam_masuk ?></b></td>
+                        <td class="text-center"><b><?php echo $u->jam_keluar ?></b></td>
+                        <td class="text-center"><b><?php echo $u->keterangan_izin ?></b></td>
+                        <td class="text-center"><b><?php echo $u->status ?></b></td>
+                        <td class="text-center"> 
+                     
+
+                        
+                        </td>
+                    </tr>
+                   
+                    <?php endforeach ?>
+                    
+                </tbody>
+                
+            </table>
+        </div>
+        
+    </div>
+   
+                   
 
 
 
