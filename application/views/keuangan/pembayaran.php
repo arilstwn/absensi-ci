@@ -137,15 +137,15 @@
                         
                         
                             <center><thead>
-                            <td class="whitespace-nowrap px-4 py-2 text-gray-700">
-                                 <!-- Data Modal -->
-                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                 Modal
-                                 </button>
-                                <!-- Export -->
-                               <a href="<?php echo base_url('keuangan/export') ?>" class="btn btn-info">Export</a>
-                                <!-- Tambah -->
-                                <a href="<?php echo base_url('keuangan/tambah_pembayaran') ?>" class="btn btn-primary">Tambah</a> 
+                                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                                    <!-- Data Modal -->
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    Modal
+                                    </button>
+                                    <!-- Export -->
+                                <a href="<?php echo base_url('keuangan/export') ?>" class="btn btn-info">Export</a>
+                                    <!-- Tambah -->
+                                    <a href="<?php echo base_url('keuangan/tambah_pembayaran') ?>" class="btn btn-primary">Tambah</a> 
 
 
 

@@ -1318,8 +1318,16 @@ public function aksi_edit_foto()
 
 
 
+public function data()
+{
+  $this->load->view('absensi/data');
+}
 
 
+public function tambah_pelanggan()
+{
+  $this->load->view('absensi/tambah_pelanggan');
+}
 
 
 

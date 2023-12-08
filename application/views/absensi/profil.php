@@ -295,7 +295,7 @@ date_default_timezone_set("Asia/Bangkok");
                                                                                         src="https://i.pinimg.com/originals/ca/df/24/cadf2484ff610b5bfbd3debcdb9debaf.jpg" />
                                                                                         <?php endif;?>
                                                                                     </button> -->
-                                                                                    <form action="<?= base_url('absensi/aksi_profil'); ?>" method="post">
+                                                                                     <form method="post" action="<?php echo base_url('absensi/aksi_profil') ?>" enctype="multipart/form_data">
 
                 <span class="border border-0 btn btn-link">
                                             <?php if (!empty($row->foto)): ?>
@@ -332,7 +332,7 @@ date_default_timezone_set("Asia/Bangkok");
                     <!-- Tambahkan tombol "Ubah" pada halaman profil -->
                    
                   
-                <form method="post" action="<?php echo base_url('absensi/aksi_profil') ?>" enctype="multipart/form_data">
+               
            
                 
                 

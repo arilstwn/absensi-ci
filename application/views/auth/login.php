@@ -148,7 +148,7 @@ button{
         <div class="form-box ">
             <div class="form-value">
             <form method="post" action="<?php echo base_url('auth/aksi_login') ?>">
-                    <h2>Login</h2>
+            <h2>Login</h2>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
                         <input name="email" type="email" required>
